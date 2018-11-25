@@ -167,7 +167,11 @@
   <ItemGroup>
     <Compile Include="com.nure\db\MySqlDbContext.cs" />
     <Compile Include="com.nure\db\TestConnection.cs" />
-    <Compile Include="com.nure\models\Genre.cs" />
+    <Compile Include="com.nure\models\Booking.cs" />
+    <Compile Include="com.nure\models\Customer.cs" />
+    <Compile Include="com.nure\models\Film.cs" />
+    <Compile Include="com.nure\models\Room.cs" />
+    <Compile Include="com.nure\models\Session.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

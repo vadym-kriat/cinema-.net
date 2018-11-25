@@ -9,13 +9,13 @@ namespace cinema_2.com.nure.models
     class Customer
     {
         private long _id;
-        private string _first_name;
-        private string _last_name;
+        private string _firstName;
+        private string _lastName;
         private string _phone;
 
         public long Id { get => _id; set => _id = value; }
-        public string First_name { get => _first_name; set => _first_name = value; }
-        public string Last_name { get => _last_name; set => _last_name = value; }
+        public string FirstName { get => _firstName; set => _firstName = value; }
+        public string LastName { get => _lastName; set => _lastName = value; }
         public string Phone { get => _phone; set => _phone = value; }
     }
 }
