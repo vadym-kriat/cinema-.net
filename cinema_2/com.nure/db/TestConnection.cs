@@ -10,10 +10,10 @@ namespace cinema_2.db
         {
             using (MySqlDbContext context = new MySqlDbContext())
             {
-                var query = (from genre in context.Genre where genre.Id == 1 select genre).ToList();
+                var query = (from session in context.Session where session.Id == 1 select session).ToList();
 
-                foreach (Genre g in query)
-                    Console.WriteLine(g.Id + " " + g.Name + "\n");
+                foreach (Session g in query)
+                    Console.WriteLine(g.Id + "\n");
 
                 Console.ReadLine();
             }

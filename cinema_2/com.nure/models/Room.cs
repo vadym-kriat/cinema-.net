@@ -12,10 +12,12 @@ namespace cinema_2.com.nure.models
         private string _name;
         private int _row;
         private int _column;
+        private List<Session> _sessions;
 
         public long Id { get => _id; set => _id = value; }
         public string Name { get => _name; set => _name = value; }
         public int Row { get => _row; set => _row = value; }
         public int Column { get => _column; set => _column = value; }
+        internal List<Session> Sessions { get => _sessions; set => _sessions = value; }
     }
 }

@@ -16,6 +16,7 @@ namespace cinema_2.com.nure.models
         private string _genre;
         private float _cost;
         private string _type;
+        private List<Session> _sessions;
 
         public long Id { get => _id; set => _id = value; }
         public string Name { get => _name; set => _name = value; }
@@ -25,5 +26,6 @@ namespace cinema_2.com.nure.models
         public string Genre { get => _genre; set => _genre = value; }
         public float Cost { get => _cost; set => _cost = value; }
         public string Type { get => _type; set => _type = value; }
+        internal List<Session> Sessions { get => _sessions; set => _sessions = value; }
     }
 }

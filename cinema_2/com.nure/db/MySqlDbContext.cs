@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace cinema_2.db
 {
-    public class MySqlDbContext : DbContext
+    class MySqlDbContext : DbContext
     {
         public DbSet<Room> Room { get; set; }
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Film> Film { get; set; }
+        public DbSet<Session> Session { get; set; }
+        public DbSet<Booking> Booking { get; set; }
 
         public MySqlDbContext()
         {
@@ -29,7 +31,7 @@ namespace cinema_2.db
                 entity.Property(r => r.Id).IsRequired().HasColumnName("room_id");
                 entity.Property(r => r.Name).IsRequired().HasColumnName("name");
                 entity.Property(r => r.Row).IsRequired().HasColumnName("row");
-                entity.Property(r => r.Column).IsRequired().HasColumnName("column");
+                entity.Property(r => r.Column).IsRequired().HasColumnName("number_in_row");
             });
 
             modelBuilder.Entity<Customer>(entity =>
@@ -57,16 +59,17 @@ namespace cinema_2.db
             modelBuilder.Entity<Session>(entity => {
                 entity.HasKey(s => s.Id);
                 entity.Property(s => s.Id).IsRequired().HasColumnName("session_id");
-                entity.HasOne(s => s.Film).WithOne().HasForeignKey("folm_id");
-                entity.HasOne(s => s.Room).WithOne().HasForeignKey("room_id");
+                //entity.HasOne<Film>(s => s.Film).H
+                entity.HasOne<Film>(s => s.Film).WithMany(f => f.Sessions).HasForeignKey(s => s.FilmId);
+                entity.HasOne<Room>(s => s.Room).WithMany(r => r.Sessions).HasForeignKey(s => s.RoomId);
                 entity.Property(s => s.DateTime).IsRequired().HasColumnName("date_time");
             });
 
             modelBuilder.Entity<Booking>(entity => {
                 entity.HasKey(b => b.Id);
                 entity.Property(b => b.Id).IsRequired().HasColumnName("booking_id");
-                entity.HasOne(b => b.Session).WithOne().HasForeignKey("session_id");
-                entity.HasOne(b => b.Customer).WithOne().HasForeignKey("customer_id");
+                entity.HasOne(b => b.Session).WithOne().HasForeignKey(typeof(Session).ToString(), "session_id");
+                entity.HasOne(b => b.Customer).WithOne().HasForeignKey(typeof(Customer).ToString(), "customer_id");
                 entity.Property(b => b.Row).IsRequired().HasColumnName("row");
                 entity.Property(b => b.SeatNumber).IsRequired().HasColumnName("seat_number");
             });
