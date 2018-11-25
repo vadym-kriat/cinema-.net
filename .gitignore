@@ -1,2 +1,5 @@
 .idea
 packages/
+bin/
+obj/
+.vs/
