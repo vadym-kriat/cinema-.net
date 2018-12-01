@@ -28,7 +28,7 @@ namespace cinema_2.db
             modelBuilder.Entity<Room>(entity =>
             {
                 entity.HasKey(r => r.Id);
-                entity.Property(r => r.Id).IsRequired().HasColumnName("room_id");
+                entity.Property(r => r.Id).IsRequired().HasColumnName("id");
                 entity.Property(r => r.Name).IsRequired().HasColumnName("name");
                 entity.Property(r => r.Row).IsRequired().HasColumnName("row");
                 entity.Property(r => r.Column).IsRequired().HasColumnName("number_in_row");
@@ -37,7 +37,7 @@ namespace cinema_2.db
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey(c => c.Id);
-                entity.Property(c => c.Id).IsRequired().HasColumnName("customer_id");
+                entity.Property(c => c.Id).IsRequired().HasColumnName("id");
                 entity.Property(c => c.FirstName).IsRequired().HasColumnName("first_name");
                 entity.Property(c => c.LastName).IsRequired().HasColumnName("last_name");
                 entity.Property(c => c.Phone).IsRequired().HasColumnName("phone");
@@ -46,7 +46,7 @@ namespace cinema_2.db
             modelBuilder.Entity<Film>(entity =>
             {
                 entity.HasKey(f => f.Id);
-                entity.Property(f => f.Id).IsRequired().HasColumnName("film_id");
+                entity.Property(f => f.Id).IsRequired().HasColumnName("id");
                 entity.Property(f => f.Name).IsRequired().HasColumnName("name");
                 entity.Property(f => f.Duration).IsRequired().HasColumnName("duration");
                 entity.Property(f => f.FirstPerformance).HasColumnName("first_performance");
@@ -58,16 +58,15 @@ namespace cinema_2.db
 
             modelBuilder.Entity<Session>(entity => {
                 entity.HasKey(s => s.Id);
-                entity.Property(s => s.Id).IsRequired().HasColumnName("session_id");
-                //entity.HasOne<Film>(s => s.Film).H
-                entity.HasOne<Film>(s => s.Film).WithMany(f => f.Sessions).HasForeignKey(s => s.FilmId);
-                entity.HasOne<Room>(s => s.Room).WithMany(r => r.Sessions).HasForeignKey(s => s.RoomId);
+                entity.Property(s => s.Id).IsRequired().HasColumnName("id");
+                entity.HasOne(s => s.Film).WithOne().HasForeignKey(typeof(Film).ToString(), "film_id");
+                entity.HasOne(s => s.Room).WithOne().HasForeignKey(typeof(Room).ToString(), "room_id");
                 entity.Property(s => s.DateTime).IsRequired().HasColumnName("date_time");
             });
 
             modelBuilder.Entity<Booking>(entity => {
                 entity.HasKey(b => b.Id);
-                entity.Property(b => b.Id).IsRequired().HasColumnName("booking_id");
+                entity.Property(b => b.Id).IsRequired().HasColumnName("id");
                 entity.HasOne(b => b.Session).WithOne().HasForeignKey(typeof(Session).ToString(), "session_id");
                 entity.HasOne(b => b.Customer).WithOne().HasForeignKey(typeof(Customer).ToString(), "customer_id");
                 entity.Property(b => b.Row).IsRequired().HasColumnName("row");
