@@ -34,9 +34,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 329);
+            this.ClientSize = new System.Drawing.Size(923, 413);
             this.Name = "BookingForm";
-            this.Text = "BookingForm";
+            this.Text = "Бронирование";
             this.ResumeLayout(false);
 
         }

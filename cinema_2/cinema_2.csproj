@@ -173,6 +173,12 @@
     <Compile Include="forms\FilmManagement.Designer.cs">
       <DependentUpon>FilmManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\SessionManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\SessionManagement.Designer.cs">
+      <DependentUpon>SessionManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\Test.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FilmManagement.resx">
       <DependentUpon>FilmManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\SessionManagement.resx">
+      <DependentUpon>SessionManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>

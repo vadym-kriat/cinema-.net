@@ -40,31 +40,17 @@ namespace cinema_2
             }
         }
 
-        private void Save(object sender, EventArgs e)
-        {
-            /*Room film = new Room();
-            film.Name = "Blue";
-            for (int i = 0; i < 10; i++)
-            {
-                film.AddRow(new Row()
-                {
-                    Seats = 10,
-                    Number = i + 1
-                });
-            }
-            new RoomPersistence().Save(film);*/
-        }
-
-        private void OpenFilmManagementWindow(object sender, EventArgs e)
+        private void OpenFilmManagementModal(object sender, EventArgs e)
         {
             FilmManagement fmm = new FilmManagement();
             fmm.ShowDialog();
             UpdateFilmList(filmPersistance.FindAll());
         }
 
-        private void SessionManagement(object sender, EventArgs e)
+        private void OpenSessionManagementModal(object sender, EventArgs e)
         {
-            
+            SessionManagement sessionManagement = new SessionManagement();
+            sessionManagement.ShowDialog();
         }
 
         private void UpdateFilmList(List<Film> films)

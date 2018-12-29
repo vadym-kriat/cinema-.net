@@ -96,7 +96,7 @@
             this.newFilm.TabIndex = 2;
             this.newFilm.Text = "Фильмы";
             this.newFilm.UseVisualStyleBackColor = true;
-            this.newFilm.Click += new System.EventHandler(this.OpenFilmManagementWindow);
+            this.newFilm.Click += new System.EventHandler(this.OpenFilmManagementModal);
             // 
             // newSession
             // 
@@ -108,7 +108,7 @@
             this.newSession.TabIndex = 2;
             this.newSession.Text = "Сеансы";
             this.newSession.UseVisualStyleBackColor = true;
-            this.newSession.Click += new System.EventHandler(this.SessionManagement);
+            this.newSession.Click += new System.EventHandler(this.OpenSessionManagementModal);
             // 
             // panel2
             // 
