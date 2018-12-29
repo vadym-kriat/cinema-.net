@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using cinema_2.models;
+using cinema_2.forms;
 
 namespace cinema_2.forms.components
 {
@@ -76,7 +77,7 @@ namespace cinema_2.forms.components
 
         private Button GetBookButton()
         {
-            Button button1 = new Button
+            Button button = new Button
             {
                 Anchor = (AnchorStyles)((AnchorStyles.Right | AnchorStyles.Bottom)),
                 Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))),
@@ -87,12 +88,14 @@ namespace cinema_2.forms.components
                 Text = "Book",
                 UseVisualStyleBackColor = true
             };
-            return button1;
+            button.Click += new EventHandler(Book);
+            return button;
         }
 
-        private void Book()
+        private void Book(object sender, EventArgs e)
         {
-
+            BookingForm bookingForm = new BookingForm();
+            bookingForm.ShowDialog();
         }
     }
 }

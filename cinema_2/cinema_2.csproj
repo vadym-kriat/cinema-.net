@@ -150,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="exceptions\Exceptions.cs" />
+    <Compile Include="forms\BookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\BookingForm.Designer.cs">
+      <DependentUpon>BookingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\components\Componentscs.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="forms\BookingForm.resx">
+      <DependentUpon>BookingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\EditFilmModal.resx">
       <DependentUpon>EditFilmModal.cs</DependentUpon>
     </EmbeddedResource>

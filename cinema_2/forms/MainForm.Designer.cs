@@ -35,7 +35,7 @@
             this.newFilm = new System.Windows.Forms.Button();
             this.newSession = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pSessionContainer = new System.Windows.Forms.Panel();
+            this.pFilmContainer = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -122,24 +122,24 @@
             this.panel2.Size = new System.Drawing.Size(128, 391);
             this.panel2.TabIndex = 1;
             // 
-            // pSessionContainer
+            // pFilmContainer
             // 
-            this.pSessionContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pFilmContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pSessionContainer.AutoScroll = true;
-            this.pSessionContainer.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pSessionContainer.Location = new System.Drawing.Point(0, 50);
-            this.pSessionContainer.Name = "pSessionContainer";
-            this.pSessionContainer.Size = new System.Drawing.Size(781, 391);
-            this.pSessionContainer.TabIndex = 2;
+            this.pFilmContainer.AutoScroll = true;
+            this.pFilmContainer.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pFilmContainer.Location = new System.Drawing.Point(0, 50);
+            this.pFilmContainer.Name = "pFilmContainer";
+            this.pFilmContainer.Size = new System.Drawing.Size(781, 391);
+            this.pFilmContainer.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(909, 441);
-            this.Controls.Add(this.pSessionContainer);
+            this.Controls.Add(this.pFilmContainer);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(580, 480);
@@ -163,6 +163,6 @@
         private System.Windows.Forms.Button newSession;
         private System.Windows.Forms.Button newFilm;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel pSessionContainer;
+        private System.Windows.Forms.Panel pFilmContainer;
     }
 }

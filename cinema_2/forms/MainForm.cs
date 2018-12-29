@@ -69,11 +69,11 @@ namespace cinema_2
 
         private void UpdateFilmList(List<Film> films)
         {
-            pSessionContainer.Controls.Clear();
+            pFilmContainer.Controls.Clear();
             for (int i = 0; i < films.Count; i++)
             {
                 FilmView view = new FilmView(films[i], i);
-                pSessionContainer.Controls.Add(view);
+                pFilmContainer.Controls.Add(view);
             }
         }
 
