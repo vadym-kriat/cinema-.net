@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using cinema_2.models;
 using cinema_2.db;
+using cinema_2.exceptions;
 
 namespace cinema_2.db.persistence
 {
@@ -23,6 +25,7 @@ namespace cinema_2.db.persistence
             using (MySqlDbContext context = new MySqlDbContext())
             {
                 var films = (from f in context.Film
+                             orderby f.Id descending
                              select f).ToList();
                 return films;
             }
@@ -43,8 +46,15 @@ namespace cinema_2.db.persistence
         {
             using (MySqlDbContext context = new MySqlDbContext())
             {
-                context.Update(film);
-                context.SaveChanges();
+                try
+                {
+                    context.Update(film);
+                    context.SaveChanges();
+                } catch (Exception e)
+                {
+                    throw new UpdateExceptions("Save film error.");
+                }
+                
             }
             return film;
         }

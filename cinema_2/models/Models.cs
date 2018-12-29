@@ -17,14 +17,6 @@ namespace cinema_2.models
         public string FirstName { get => _firstName; set => _firstName = value; }
         public string LastName { get => _lastName; set => _lastName = value; }
         public string Phone { get => _phone; set => _phone = value; }
-
-        public override string ToString()
-        {
-            return "FiCustomer: id = " + _id +
-                " first name = " + _firstName +
-                " last name = "+ _lastName + 
-                " phone = " + _phone;
-        }
     }
 
     public class Film
@@ -53,11 +45,6 @@ namespace cinema_2.models
         public float Cost { get => _cost; set => _cost = value; }
         public string Type { get => _type; set => _type = value; }
         public string Description { get => _description; set => _description = value; }
-
-        public override string ToString()
-        {
-            return "Film: id = " + _id + " name = " + _name; 
-        }
     }
 
     public class Room

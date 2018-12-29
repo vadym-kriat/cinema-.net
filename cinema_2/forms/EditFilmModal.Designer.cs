@@ -300,6 +300,7 @@
             this.txtDescription.Location = new System.Drawing.Point(153, 43);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
+            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescription.Size = new System.Drawing.Size(382, 194);
             this.txtDescription.TabIndex = 1;
             // 
@@ -311,7 +312,9 @@
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(569, 520);
             this.Name = "EditFilmModal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Film";
+            this.VisibleChanged += new System.EventHandler(this.FormVisibleChanged);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel.ResumeLayout(false);

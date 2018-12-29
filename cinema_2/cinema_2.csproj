@@ -149,6 +149,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="exceptions\Exceptions.cs" />
+    <Compile Include="forms\components\Componentscs.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="forms\EditFilmModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,11 +161,17 @@
     </Compile>
     <Compile Include="db\persistence\Persistences.cs" />
     <Compile Include="db\MySqlDbContext.cs" />
-    <Compile Include="forms\FilmManagementModal.cs">
+    <Compile Include="forms\FilmManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FilmManagementModal.Designer.cs">
-      <DependentUpon>FilmManagementModal.cs</DependentUpon>
+    <Compile Include="forms\FilmManagement.Designer.cs">
+      <DependentUpon>FilmManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
     </Compile>
     <Compile Include="models\Models.cs" />
     <Compile Include="forms\MainForm.cs">
@@ -185,8 +195,11 @@
     <EmbeddedResource Include="forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\FilmManagementModal.resx">
-      <DependentUpon>FilmManagementModal.cs</DependentUpon>
+    <EmbeddedResource Include="forms\FilmManagement.resx">
+      <DependentUpon>FilmManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,14 +11,19 @@ using cinema_2.db.persistence;
 using cinema_2.models;
 using cinema_2.services;
 using cinema_2.forms;
+using cinema_2.forms.components;
 
 namespace cinema_2
 {
     public partial class MainForm : Form
     {
+        private FilmPersistence filmPersistance;
+
         public MainForm()
         {
             InitializeComponent();
+            filmPersistance = new FilmPersistence();
+            UpdateFilmList(filmPersistance.FindAll());
         }
 
         private void FindAllFilms(object sender, EventArgs e)
@@ -37,7 +42,7 @@ namespace cinema_2
 
         private void Save(object sender, EventArgs e)
         {
-            Room film = new Room();
+            /*Room film = new Room();
             film.Name = "Blue";
             for (int i = 0; i < 10; i++)
             {
@@ -47,30 +52,44 @@ namespace cinema_2
                     Number = i + 1
                 });
             }
-            new RoomPersistence().Save(film);
+            new RoomPersistence().Save(film);*/
         }
 
-        private void FilmManagement(object sender, EventArgs e)
+        private void OpenFilmManagementWindow(object sender, EventArgs e)
         {
-            FilmManagementModal fmm = new FilmManagementModal();
-            fmm.Show();
+            FilmManagement fmm = new FilmManagement();
+            fmm.ShowDialog();
+            UpdateFilmList(filmPersistance.FindAll());
         }
 
         private void SessionManagement(object sender, EventArgs e)
         {
             
-            /*try
+        }
+
+        private void UpdateFilmList(List<Film> films)
+        {
+            pSessionContainer.Controls.Clear();
+            for (int i = 0; i < films.Count; i++)
             {
-                new BookingService().Book(1, 1, 12, 12);
-            } catch (Exception ex)
+                FilmView view = new FilmView(films[i], i);
+                pSessionContainer.Controls.Add(view);
+            }
+        }
+
+        private void Search(object sender, EventArgs e)
+        {
+            UpdateFilmList(filmPersistance.FindByName(txtSearch.Text));
+        }
+
+        private void SearchByEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
             {
-                MessageBox.Show(
-                    ex.Message,
-                    "Important Note",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation,
-                    MessageBoxDefaultButton.Button1);
-            }*/
+                // Prevent 'Beep'
+                e.Handled = true;
+                Search(sender, e);
+            }
         }
     }
 }
