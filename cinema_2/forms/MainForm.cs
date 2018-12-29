@@ -70,6 +70,12 @@ namespace cinema_2
         private void UpdateFilmList(List<Film> films)
         {
             pFilmContainer.Controls.Clear();
+
+            if (films.Count == 0)
+            {
+                pFilmContainer.Controls.Add(new NotFoundPanelComponent());
+            }
+
             for (int i = 0; i < films.Count; i++)
             {
                 FilmView view = new FilmView(films[i], i);

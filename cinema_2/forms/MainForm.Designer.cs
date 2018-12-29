@@ -60,7 +60,7 @@
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(100, 26);
             this.search.TabIndex = 2;
-            this.search.Text = "Search";
+            this.search.Text = "Поиск";
             this.search.UseVisualStyleBackColor = true;
             this.search.Click += new System.EventHandler(this.Search);
             // 
@@ -82,9 +82,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(10, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 18);
+            this.label1.Size = new System.Drawing.Size(75, 18);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Film name";
+            this.label1.Text = "Название";
             // 
             // newFilm
             // 
@@ -94,7 +94,7 @@
             this.newFilm.Name = "newFilm";
             this.newFilm.Size = new System.Drawing.Size(100, 26);
             this.newFilm.TabIndex = 2;
-            this.newFilm.Text = "Films";
+            this.newFilm.Text = "Фильмы";
             this.newFilm.UseVisualStyleBackColor = true;
             this.newFilm.Click += new System.EventHandler(this.OpenFilmManagementWindow);
             // 
@@ -106,7 +106,7 @@
             this.newSession.Name = "newSession";
             this.newSession.Size = new System.Drawing.Size(100, 26);
             this.newSession.TabIndex = 2;
-            this.newSession.Text = "Sessions";
+            this.newSession.Text = "Сеансы";
             this.newSession.UseVisualStyleBackColor = true;
             this.newSession.Click += new System.EventHandler(this.SessionManagement);
             // 
@@ -145,7 +145,7 @@
             this.MinimumSize = new System.Drawing.Size(580, 480);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cinema";
+            this.Text = "Кинотеатр";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

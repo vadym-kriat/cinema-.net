@@ -50,7 +50,7 @@ namespace cinema_2.forms.components
                 Location = new System.Drawing.Point(5, 40),
                 Name = "lblGenre",
                 TabIndex = 0,
-                Text = "Genre: " + genre
+                Text = "Жанр: " + genre
             };
             return label;
         }
@@ -81,11 +81,11 @@ namespace cinema_2.forms.components
             {
                 Anchor = (AnchorStyles)((AnchorStyles.Right | AnchorStyles.Bottom)),
                 Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))),
-                Location = new System.Drawing.Point(390, 200),
+                Location = new System.Drawing.Point(360, 200),
                 Name = "btnBook",
-                Size = new System.Drawing.Size(100, 26),
+                Size = new System.Drawing.Size(130, 26),
                 TabIndex = 2,
-                Text = "Book",
+                Text = "Забронировать",
                 UseVisualStyleBackColor = true
             };
             button.Click += new EventHandler(Book);
@@ -96,6 +96,31 @@ namespace cinema_2.forms.components
         {
             BookingForm bookingForm = new BookingForm();
             bookingForm.ShowDialog();
+        }
+    }
+
+    public class NotFoundPanelComponent : Panel
+    {
+        public NotFoundPanelComponent() : base()
+        {
+            Dock = DockStyle.Fill;
+            BackColor = System.Drawing.SystemColors.Control;
+            Controls.Add(GetNotFoundLabel());
+        }
+
+        private Label GetNotFoundLabel()
+        {
+            Label label = new Label()
+            {
+                AutoSize = false,
+                Dock = DockStyle.Fill,
+                Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))),
+                Name = "lbl",
+                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+                TabIndex = 0,
+                Text = "Nothing is found."
+            };
+            return label;
         }
     }
 }

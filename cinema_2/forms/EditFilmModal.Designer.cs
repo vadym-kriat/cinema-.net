@@ -66,8 +66,8 @@
             // 
             this.tableLayoutPanel.AutoSize = true;
             this.tableLayoutPanel.ColumnCount = 2;
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.92318F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.07682F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68F));
             this.tableLayoutPanel.Controls.Add(this.btnSave, 1, 8);
             this.tableLayoutPanel.Controls.Add(this.txtName, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.btnCancel, 0, 8);
@@ -110,12 +110,12 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSave.Location = new System.Drawing.Point(458, 440);
+            this.btnSave.Location = new System.Drawing.Point(438, 440);
             this.btnSave.Margin = new System.Windows.Forms.Padding(0);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(80, 26);
+            this.btnSave.Size = new System.Drawing.Size(100, 26);
             this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Сохранить";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.Save);
             // 
@@ -123,9 +123,9 @@
             // 
             this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtName.Location = new System.Drawing.Point(153, 13);
+            this.txtName.Location = new System.Drawing.Point(185, 13);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(382, 24);
+            this.txtName.Size = new System.Drawing.Size(350, 24);
             this.txtName.TabIndex = 1;
             this.txtName.WordWrap = false;
             // 
@@ -136,9 +136,9 @@
             this.btnCancel.Location = new System.Drawing.Point(15, 440);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(80, 26);
+            this.btnCancel.Size = new System.Drawing.Size(100, 26);
             this.btnCancel.TabIndex = 9;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.Cancel);
             // 
@@ -149,17 +149,17 @@
             this.lblName.Location = new System.Drawing.Point(15, 13);
             this.lblName.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(48, 18);
+            this.lblName.Size = new System.Drawing.Size(38, 18);
             this.lblName.TabIndex = 0;
-            this.lblName.Text = "Name";
+            this.lblName.Text = "Имя";
             // 
             // txtCountry
             // 
             this.txtCountry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtCountry.Location = new System.Drawing.Point(153, 303);
+            this.txtCountry.Location = new System.Drawing.Point(185, 303);
             this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(382, 24);
+            this.txtCountry.Size = new System.Drawing.Size(350, 24);
             this.txtCountry.TabIndex = 4;
             this.txtCountry.WordWrap = false;
             // 
@@ -167,9 +167,9 @@
             // 
             this.txtGenre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtGenre.Location = new System.Drawing.Point(153, 333);
+            this.txtGenre.Location = new System.Drawing.Point(185, 333);
             this.txtGenre.Name = "txtGenre";
-            this.txtGenre.Size = new System.Drawing.Size(382, 24);
+            this.txtGenre.Size = new System.Drawing.Size(350, 24);
             this.txtGenre.TabIndex = 5;
             this.txtGenre.WordWrap = false;
             // 
@@ -177,9 +177,9 @@
             // 
             this.txtCost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtCost.Location = new System.Drawing.Point(153, 363);
+            this.txtCost.Location = new System.Drawing.Point(185, 363);
             this.txtCost.Name = "txtCost";
-            this.txtCost.Size = new System.Drawing.Size(382, 24);
+            this.txtCost.Size = new System.Drawing.Size(350, 24);
             this.txtCost.TabIndex = 6;
             this.txtCost.WordWrap = false;
             // 
@@ -190,9 +190,9 @@
             this.lblDuration.Location = new System.Drawing.Point(15, 243);
             this.lblDuration.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(130, 18);
+            this.lblDuration.Size = new System.Drawing.Size(154, 18);
             this.lblDuration.TabIndex = 0;
-            this.lblDuration.Text = "Duration (minutes)";
+            this.lblDuration.Text = "Продолжительность";
             // 
             // lblFirstPerformance
             // 
@@ -201,9 +201,9 @@
             this.lblFirstPerformance.Location = new System.Drawing.Point(15, 273);
             this.lblFirstPerformance.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.lblFirstPerformance.Name = "lblFirstPerformance";
-            this.lblFirstPerformance.Size = new System.Drawing.Size(125, 18);
+            this.lblFirstPerformance.Size = new System.Drawing.Size(78, 18);
             this.lblFirstPerformance.TabIndex = 0;
-            this.lblFirstPerformance.Text = "First performance";
+            this.lblFirstPerformance.Text = "Премьера";
             // 
             // lblCountry
             // 
@@ -212,9 +212,9 @@
             this.lblCountry.Location = new System.Drawing.Point(15, 303);
             this.lblCountry.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(60, 18);
+            this.lblCountry.Size = new System.Drawing.Size(58, 18);
             this.lblCountry.TabIndex = 0;
-            this.lblCountry.Text = "Country";
+            this.lblCountry.Text = "Страна";
             // 
             // lblGenre
             // 
@@ -223,9 +223,9 @@
             this.lblGenre.Location = new System.Drawing.Point(15, 333);
             this.lblGenre.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.lblGenre.Name = "lblGenre";
-            this.lblGenre.Size = new System.Drawing.Size(49, 18);
+            this.lblGenre.Size = new System.Drawing.Size(46, 18);
             this.lblGenre.TabIndex = 0;
-            this.lblGenre.Text = "Genre";
+            this.lblGenre.Text = "Жанр";
             // 
             // lblCost
             // 
@@ -234,31 +234,31 @@
             this.lblCost.Location = new System.Drawing.Point(15, 363);
             this.lblCost.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(40, 18);
+            this.lblCost.Size = new System.Drawing.Size(43, 18);
             this.lblCost.TabIndex = 0;
-            this.lblCost.Text = "Cost";
+            this.lblCost.Text = "Цена";
             // 
             // numDuration
             // 
             this.numDuration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numDuration.Location = new System.Drawing.Point(153, 243);
+            this.numDuration.Location = new System.Drawing.Point(185, 243);
             this.numDuration.Maximum = new decimal(new int[] {
             400,
             0,
             0,
             0});
             this.numDuration.Name = "numDuration";
-            this.numDuration.Size = new System.Drawing.Size(382, 24);
+            this.numDuration.Size = new System.Drawing.Size(350, 24);
             this.numDuration.TabIndex = 2;
             // 
             // dateFirstPerformance
             // 
             this.dateFirstPerformance.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateFirstPerformance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateFirstPerformance.Location = new System.Drawing.Point(153, 273);
+            this.dateFirstPerformance.Location = new System.Drawing.Point(185, 273);
             this.dateFirstPerformance.Name = "dateFirstPerformance";
-            this.dateFirstPerformance.Size = new System.Drawing.Size(382, 24);
+            this.dateFirstPerformance.Size = new System.Drawing.Size(350, 24);
             this.dateFirstPerformance.TabIndex = 3;
             // 
             // lblFormat
@@ -268,17 +268,17 @@
             this.lblFormat.Location = new System.Drawing.Point(15, 393);
             this.lblFormat.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.lblFormat.Name = "lblFormat";
-            this.lblFormat.Size = new System.Drawing.Size(56, 18);
+            this.lblFormat.Size = new System.Drawing.Size(33, 18);
             this.lblFormat.TabIndex = 0;
-            this.lblFormat.Text = "Format";
+            this.lblFormat.Text = "Тип";
             // 
             // txtFormat
             // 
             this.txtFormat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtFormat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtFormat.Location = new System.Drawing.Point(153, 393);
+            this.txtFormat.Location = new System.Drawing.Point(185, 393);
             this.txtFormat.Name = "txtFormat";
-            this.txtFormat.Size = new System.Drawing.Size(382, 24);
+            this.txtFormat.Size = new System.Drawing.Size(350, 24);
             this.txtFormat.TabIndex = 7;
             this.txtFormat.WordWrap = false;
             // 
@@ -289,19 +289,19 @@
             this.lblDescription.Location = new System.Drawing.Point(15, 43);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(83, 18);
+            this.lblDescription.Size = new System.Drawing.Size(76, 18);
             this.lblDescription.TabIndex = 0;
-            this.lblDescription.Text = "Description";
+            this.lblDescription.Text = "Описание";
             // 
             // txtDescription
             // 
             this.txtDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtDescription.Location = new System.Drawing.Point(153, 43);
+            this.txtDescription.Location = new System.Drawing.Point(185, 43);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescription.Size = new System.Drawing.Size(382, 194);
+            this.txtDescription.Size = new System.Drawing.Size(350, 194);
             this.txtDescription.TabIndex = 1;
             // 
             // EditFilmModal
@@ -313,7 +313,7 @@
             this.MinimumSize = new System.Drawing.Size(569, 520);
             this.Name = "EditFilmModal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Film";
+            this.Text = "Фильм";
             this.VisibleChanged += new System.EventHandler(this.FormVisibleChanged);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

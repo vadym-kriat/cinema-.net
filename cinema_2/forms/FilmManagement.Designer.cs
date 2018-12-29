@@ -69,11 +69,11 @@
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnRemove.Location = new System.Drawing.Point(814, 64);
+            this.btnRemove.Location = new System.Drawing.Point(784, 64);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(100, 26);
+            this.btnRemove.Size = new System.Drawing.Size(130, 26);
             this.btnRemove.TabIndex = 1;
-            this.btnRemove.Text = "Remove";
+            this.btnRemove.Text = "Удалить";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.RemoveFilm);
             // 
@@ -81,11 +81,11 @@
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnEdit.Location = new System.Drawing.Point(814, 32);
+            this.btnEdit.Location = new System.Drawing.Point(784, 32);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(100, 26);
+            this.btnEdit.Size = new System.Drawing.Size(130, 26);
             this.btnEdit.TabIndex = 1;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Редактировать";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.EditFilm);
             // 
@@ -93,11 +93,11 @@
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCreate.Location = new System.Drawing.Point(814, 0);
+            this.btnCreate.Location = new System.Drawing.Point(784, 0);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(100, 26);
+            this.btnCreate.Size = new System.Drawing.Size(130, 26);
             this.btnCreate.TabIndex = 1;
-            this.btnCreate.Text = "Create";
+            this.btnCreate.Text = "Создать";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.CreateFilm);
             // 
@@ -111,7 +111,7 @@
             this.panelGvd.Location = new System.Drawing.Point(12, 12);
             this.panelGvd.Name = "panelGvd";
             this.panelGvd.Padding = new System.Windows.Forms.Padding(1);
-            this.panelGvd.Size = new System.Drawing.Size(808, 410);
+            this.panelGvd.Size = new System.Drawing.Size(778, 410);
             this.panelGvd.TabIndex = 2;
             // 
             // dgvFilms
@@ -157,7 +157,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dgvFilms.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFilms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFilms.Size = new System.Drawing.Size(806, 408);
+            this.dgvFilms.Size = new System.Drawing.Size(776, 408);
             this.dgvFilms.TabIndex = 0;
             // 
             // Id
@@ -173,16 +173,16 @@
             // 
             this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.name.DataPropertyName = "Name";
-            this.name.HeaderText = "Name";
+            this.name.HeaderText = "Имя";
             this.name.Name = "name";
             this.name.ReadOnly = true;
-            this.name.Width = 73;
+            this.name.Width = 63;
             // 
             // Description
             // 
             this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
+            this.Description.HeaderText = "Описание";
             this.Description.MinimumWidth = 90;
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
@@ -191,55 +191,55 @@
             // 
             this.FirstPerformance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FirstPerformance.DataPropertyName = "FirstPerformance";
-            this.FirstPerformance.HeaderText = "FirstPerformance";
+            this.FirstPerformance.HeaderText = "Дата выхода";
             this.FirstPerformance.Name = "FirstPerformance";
             this.FirstPerformance.ReadOnly = true;
-            this.FirstPerformance.Width = 148;
+            this.FirstPerformance.Width = 114;
             // 
             // Duration
             // 
             this.Duration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Duration.DataPropertyName = "Duration";
-            this.Duration.HeaderText = "Duration (min)";
+            this.Duration.HeaderText = "Продолжительность (мин";
             this.Duration.Name = "Duration";
             this.Duration.ReadOnly = true;
-            this.Duration.Width = 127;
+            this.Duration.Width = 195;
             // 
             // Country
             // 
             this.Country.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Country.DataPropertyName = "Country";
-            this.Country.HeaderText = "Country";
+            this.Country.HeaderText = "Страна";
             this.Country.Name = "Country";
             this.Country.ReadOnly = true;
-            this.Country.Width = 85;
+            this.Country.Width = 83;
             // 
             // Genre
             // 
             this.Genre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Genre.DataPropertyName = "Genre";
-            this.Genre.HeaderText = "Genre";
+            this.Genre.HeaderText = "Жанр";
             this.Genre.Name = "Genre";
             this.Genre.ReadOnly = true;
-            this.Genre.Width = 74;
+            this.Genre.Width = 71;
             // 
             // Cost
             // 
             this.Cost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Cost.DataPropertyName = "Cost";
-            this.Cost.HeaderText = "Cost";
+            this.Cost.HeaderText = "Стоимость";
             this.Cost.Name = "Cost";
             this.Cost.ReadOnly = true;
-            this.Cost.Width = 65;
+            this.Cost.Width = 111;
             // 
             // Type
             // 
             this.Type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Type.DataPropertyName = "Type";
-            this.Type.HeaderText = "Type";
+            this.Type.HeaderText = "Тип";
             this.Type.Name = "Type";
             this.Type.ReadOnly = true;
-            this.Type.Width = 65;
+            this.Type.Width = 58;
             // 
             // FilmManagement
             // 
@@ -251,7 +251,7 @@
             this.MinimumSize = new System.Drawing.Size(725, 373);
             this.Name = "FilmManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SessionManagement";
+            this.Text = "Film Management";
             this.panel1.ResumeLayout(false);
             this.panelGvd.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFilms)).EndInit();
