@@ -17,7 +17,7 @@ namespace cinema_2.forms.components
             BackColor = System.Drawing.SystemColors.Control;
             Dock = DockStyle.Top;
             BorderStyle = BorderStyle.FixedSingle;
-            Padding = new System.Windows.Forms.Padding(10);
+            Padding = new Padding(10);
             if (film != null)
             {
                 Controls.Add(GetBookButton());
