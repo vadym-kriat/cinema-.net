@@ -18,11 +18,13 @@ namespace cinema_2
     public partial class MainForm : Form
     {
         private FilmPersistence filmPersistance;
+        private RoomPersistence roomPersistence;
 
         public MainForm()
         {
             InitializeComponent();
             filmPersistance = new FilmPersistence();
+            roomPersistence = new RoomPersistence();
             UpdateFilmList(filmPersistance.FindAll());
         }
 
@@ -49,7 +51,9 @@ namespace cinema_2
 
         private void OpenSessionManagementModal(object sender, EventArgs e)
         {
+            List<Room> rooms = roomPersistence.FindAll();
             SessionManagement sessionManagement = new SessionManagement();
+            sessionManagement.SaveRoomList(rooms);
             sessionManagement.ShowDialog();
         }
 

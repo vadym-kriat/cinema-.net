@@ -118,7 +118,7 @@ namespace cinema_2.forms.components
                 Name = "lbl",
                 TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
                 TabIndex = 0,
-                Text = "Nothing is found."
+                Text = "Ничего не найдено."
             };
             return label;
         }
