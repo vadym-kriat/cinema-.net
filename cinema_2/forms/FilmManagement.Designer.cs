@@ -38,7 +38,6 @@
             this.panelGvd = new System.Windows.Forms.Panel();
             this.dgvFilms = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstPerformance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,7 +131,6 @@
             this.dgvFilms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFilms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.name,
             this.Description,
             this.FirstPerformance,
             this.Duration,
@@ -170,15 +168,6 @@
             this.Id.ReadOnly = true;
             this.Id.Width = 47;
             // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.name.DataPropertyName = "Name";
-            this.name.HeaderText = "Имя";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 63;
-            // 
             // Description
             // 
             this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -195,7 +184,7 @@
             this.FirstPerformance.HeaderText = "Дата выхода";
             this.FirstPerformance.Name = "FirstPerformance";
             this.FirstPerformance.ReadOnly = true;
-            this.FirstPerformance.Width = 124;
+            this.FirstPerformance.Width = 114;
             // 
             // Duration
             // 
@@ -253,7 +242,6 @@
             this.Name = "FilmManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Film Management";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panelGvd.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFilms)).EndInit();
