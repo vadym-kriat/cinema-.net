@@ -37,6 +37,7 @@
             this.dgvPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnAddSession = new System.Windows.Forms.Button();
             this.dtpTime = new System.Windows.Forms.DateTimePicker();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
@@ -46,7 +47,6 @@
             this.lblFilm = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblRoom = new System.Windows.Forms.Label();
-            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSessions)).BeginInit();
             this.dgvPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -162,6 +162,17 @@
             this.panel1.Size = new System.Drawing.Size(374, 421);
             this.panel1.TabIndex = 3;
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRemove.Location = new System.Drawing.Point(12, 164);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(100, 26);
+            this.btnRemove.TabIndex = 3;
+            this.btnRemove.Text = "Удалить";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.RemoveSession);
+            // 
             // btnAddSession
             // 
             this.btnAddSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -178,9 +189,9 @@
             // 
             this.dtpTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpTime.CustomFormat = "HH:mm";
             this.dtpTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTime.CustomFormat = "HH:mm";
             this.dtpTime.Location = new System.Drawing.Point(130, 123);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowUpDown = true;
@@ -259,17 +270,6 @@
             this.lblRoom.TabIndex = 0;
             this.lblRoom.Text = "Комната:";
             // 
-            // btnRemove
-            // 
-            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnRemove.Location = new System.Drawing.Point(12, 164);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(100, 26);
-            this.btnRemove.TabIndex = 3;
-            this.btnRemove.Text = "Удалить";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.RemoveSession);
-            // 
             // SessionManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,7 +277,7 @@
             this.ClientSize = new System.Drawing.Size(784, 451);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.pContainer);
-            this.MinimumSize = new System.Drawing.Size(700, 490);
+            this.MinimumSize = new System.Drawing.Size(700, 390);
             this.Name = "SessionManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сеансы";

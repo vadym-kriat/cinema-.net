@@ -16,20 +16,19 @@ namespace cinema_2.forms
 {
     public partial class FilmManagement : Form
     {
-        private EditFilmModal _editFilmModal;
         private FilmPersistence _filmPersistence;
 
         public FilmManagement()
         {
             InitializeComponent();
-            _editFilmModal = new EditFilmModal();
             _filmPersistence = new FilmPersistence();
             UpdateTable();
         }
 
         private void CreateFilm(object sender, EventArgs e)
         {
-            _editFilmModal.ShowDialog();
+            EditFilmModal modal = new EditFilmModal();
+            modal.ShowDialog();
             UpdateTable();
         }
 
@@ -42,9 +41,10 @@ namespace cinema_2.forms
 
         private void EditFilm(object sender, EventArgs e)
         {
+            EditFilmModal modal = new EditFilmModal();
             Film film = (Film)dgvFilms.CurrentRow.DataBoundItem;
-            _editFilmModal.SaveFilm(film);
-            _editFilmModal.ShowDialog();
+            modal.SaveFilm(film);
+            modal.ShowDialog();
             UpdateTable();
         }
 

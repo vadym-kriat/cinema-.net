@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using cinema_2.models;
-using cinema_2.forms;
 
 namespace cinema_2.forms.components
 {
@@ -15,8 +10,8 @@ namespace cinema_2.forms.components
         {
             Size = new System.Drawing.Size(500, 236);
             BackColor = System.Drawing.SystemColors.Control;
+            BorderStyle = BorderStyle.Fixed3D;
             Dock = DockStyle.Top;
-            BorderStyle = BorderStyle.FixedSingle;
             Padding = new Padding(10);
             if (film != null)
             {

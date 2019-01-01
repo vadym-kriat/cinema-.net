@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,7 @@ namespace cinema_2
         {
             InitializeComponent();
             _filmPersistence = new FilmPersistence();
+            ShowNotImageLoadedLabel();
         }
 
         public void SaveFilm(Film film)
@@ -45,7 +47,8 @@ namespace cinema_2
                     Country = txtCountry.Text,
                     Genre = txtGenre.Text,
                     Cost = float.Parse(txtCost.Text),
-                    Type = txtFormat.Text
+                    Type = txtFormat.Text,
+                    Image = ImageToByteArray(pbImage.Image)
                 };
                 if (id != 0)
                 {
@@ -64,18 +67,7 @@ namespace cinema_2
 
         private void Cancel(object sender, EventArgs e)
         {
-            this.Hide();
-            id = 0;
-            ClearFields();
-        }
-
-        private void FormVisibleChanged(object sender, EventArgs e)
-        {
-            if (!this.Visible)
-            {
-                id = 0;
-                ClearFields();
-            }
+            this.Close();
         }
 
         private void FillFields(Film film)
@@ -93,16 +85,54 @@ namespace cinema_2
             }
         }
 
-        private void ClearFields()
+        private void OpenFileExplorer(object sender, EventArgs e)
         {
-            txtName.Text = "";
-            txtDescription.Text = "";
-            numDuration.Value = 0;
-            dateFirstPerformance.Value = DateTime.Now;
-            txtCountry.Text = "";
-            txtGenre.Text = "";
-            txtCost.Text = "";
-            txtFormat.Text = "";
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Title = "Открыть изображение",
+                Filter = "Image Files(*.jpg; *.jpeg; *.bmp)|*.jpg; *.jpeg; *.bmp"
+            };
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                pbImage.Image = new Bitmap(ofd.FileName);
+                ShowPictureBox();
+            }
+        }
+
+        private void ClearPictureBox(object sender, EventArgs e)
+        {
+            ShowNotImageLoadedLabel();
+        }
+
+        private void ShowPictureBox()
+        {
+            tlpImage.Controls.Remove(tlpImage.GetControlFromPosition(0, 0));
+            tlpImage.Controls.Add(pbImage, 0, 0);
+        }
+
+        private void ShowNotImageLoadedLabel()
+        {
+            Label label = new Label
+            {
+                AutoSize = false,
+                Dock = DockStyle.Fill,
+                Font = new Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))),
+                Location = new Point(0, 14),
+                ForeColor = Color.DarkGray,
+                Name = "lblNotImageLoaded",
+                TextAlign = ContentAlignment.MiddleCenter,
+                TabIndex = 0,
+                Text = "Изображение не выбрано"
+            };
+            tlpImage.Controls.Remove(tlpImage.GetControlFromPosition(0, 0));
+            tlpImage.Controls.Add(label, 0, 0);
+        }
+
+        private byte[] ImageToByteArray(Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+            return ms.ToArray();
         }
     }
 }

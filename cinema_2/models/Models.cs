@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +32,7 @@ namespace cinema_2.models
         private string _genre;
         private float _cost;
         private string _type;
+        private byte[] _image;
 
         public Film()
         {
@@ -45,6 +48,7 @@ namespace cinema_2.models
         public float Cost { get => _cost; set => _cost = value; }
         public string Type { get => _type; set => _type = value; }
         public string Description { get => _description; set => _description = value; }
+        public byte[] Image { get => _image; set => _image = value; }
 
         public override string ToString()
         {

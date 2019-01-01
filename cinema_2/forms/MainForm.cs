@@ -55,6 +55,27 @@ namespace cinema_2
             sessionManagement.ShowDialog();
         }
 
+        private void Search(object sender, EventArgs e)
+        {
+            UpdateFilmList(filmPersistance.FindByName(txtSearch.Text));
+        }
+
+        private void SearchByEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                // Prevent 'Beep'
+                e.Handled = true;
+                Search(sender, e);
+            }
+        }
+
+        private void Clear(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+            UpdateFilmList(filmPersistance.FindAll());
+        }
+
         private void UpdateFilmList(List<Film> films)
         {
             pFilmContainer.Controls.Clear();
@@ -68,21 +89,6 @@ namespace cinema_2
             {
                 FilmView view = new FilmView(films[i], i);
                 pFilmContainer.Controls.Add(view);
-            }
-        }
-
-        private void Search(object sender, EventArgs e)
-        {
-            UpdateFilmList(filmPersistance.FindByName(txtSearch.Text));
-        }
-
-        private void SearchByEnter(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                // Prevent 'Beep'
-                e.Handled = true;
-                Search(sender, e);
             }
         }
     }

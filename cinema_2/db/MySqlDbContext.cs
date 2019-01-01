@@ -64,6 +64,7 @@ namespace cinema_2.db
                 entity.Property(f => f.Genre);
                 entity.Property(f => f.Cost);
                 entity.Property(f => f.Type);
+                entity.Property(f => f.Image);
             });
 
             modelBuilder.Entity<Session>(entity => {
