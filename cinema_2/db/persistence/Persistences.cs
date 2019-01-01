@@ -234,6 +234,23 @@ namespace cinema_2.db.persistence
             }
             return session;
         }
+
+        public bool AlreadyExist(Session session)
+        {
+            using (MySqlDbContext context = new MySqlDbContext())
+            {
+                var res = (from s in context.Session
+                         where s.FilmId == session.FilmId &&
+                         s.RoomId == session.RoomId &&
+                         DateTime.Compare(s.DateTime, session.DateTime) == 0
+                         select s).ToList();
+                if (res.Count != 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
     class BookingPersistance

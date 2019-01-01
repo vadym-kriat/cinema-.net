@@ -47,15 +47,31 @@ namespace cinema_2.forms
 
             if (film == null || room == null)
             {
-                MessageBoxManager.Exclamation("Invalid data", "Chose film and room.");
+                MessageBoxManager.Exclamation("Неверные данные", "Выберете фильм и комнату.");
                 return;
             }
 
-            sessionPersistance.Save(new Session() {
+            if (DateTime.Compare(date, DateTime.Now) < 0)
+            {
+                MessageBoxManager.Exclamation("Неверные данные",
+                    "Дата должна быть не меньше текущей.");
+                return;
+            }
+
+            Session session = new Session()
+            {
                 FilmId = film.Id,
                 RoomId = room.Id,
                 DateTime = date.Date + time
-            });
+            };
+
+            if (sessionPersistance.AlreadyExist(session))
+            {
+                MessageBoxManager.Exclamation("Неверные данные", "Сеанс уже существует.");
+                return;
+            }
+
+            sessionPersistance.Save(session);
             LoadAllSessions();
         }
 
