@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using cinema_2.models;
 using cinema_2.db.persistence;
 using cinema_2.exceptions;
+using cinema_2.forms.messages;
 
 namespace cinema_2
 {
@@ -54,20 +55,10 @@ namespace cinema_2
                 this.Cancel(sender, e);
             } catch (UpdateExceptions ex)
             {
-                MessageBox.Show(
-                   ex.Message,
-                   "Save film error",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error,
-                   MessageBoxDefaultButton.Button1);
+                MessageBoxManager.Error("Save film error", ex.Message);
             } catch (FormatException ex)
             {
-                MessageBox.Show(
-                   ex.Message,
-                   "Invalid data",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Exclamation,
-                   MessageBoxDefaultButton.Button1);
+                MessageBoxManager.Exclamation("Invalid data", ex.Message);
             }
         }
 

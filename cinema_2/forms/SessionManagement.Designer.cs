@@ -41,11 +41,12 @@
             this.dtpTime = new System.Windows.Forms.DateTimePicker();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.lblTime = new System.Windows.Forms.Label();
+            this.cbFilm = new System.Windows.Forms.ComboBox();
             this.cbRoom = new System.Windows.Forms.ComboBox();
+            this.lblFilm = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblRoom = new System.Windows.Forms.Label();
-            this.lblFilm = new System.Windows.Forms.Label();
-            this.cbFilm = new System.Windows.Forms.ComboBox();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSessions)).BeginInit();
             this.dgvPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -145,6 +146,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.btnRemove);
             this.panel1.Controls.Add(this.btnAddSession);
             this.panel1.Controls.Add(this.dtpTime);
             this.panel1.Controls.Add(this.dtpDate);
@@ -204,6 +206,17 @@
             this.lblTime.TabIndex = 0;
             this.lblTime.Text = "Время:";
             // 
+            // cbFilm
+            // 
+            this.cbFilm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbFilm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbFilm.FormattingEnabled = true;
+            this.cbFilm.Location = new System.Drawing.Point(130, 1);
+            this.cbFilm.Name = "cbFilm";
+            this.cbFilm.Size = new System.Drawing.Size(241, 26);
+            this.cbFilm.TabIndex = 1;
+            // 
             // cbRoom
             // 
             this.cbRoom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -214,6 +227,16 @@
             this.cbRoom.Name = "cbRoom";
             this.cbRoom.Size = new System.Drawing.Size(241, 26);
             this.cbRoom.TabIndex = 1;
+            // 
+            // lblFilm
+            // 
+            this.lblFilm.AutoSize = true;
+            this.lblFilm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblFilm.Location = new System.Drawing.Point(9, 4);
+            this.lblFilm.Name = "lblFilm";
+            this.lblFilm.Size = new System.Drawing.Size(61, 18);
+            this.lblFilm.TabIndex = 0;
+            this.lblFilm.Text = "Фильм:";
             // 
             // lblDate
             // 
@@ -235,26 +258,16 @@
             this.lblRoom.TabIndex = 0;
             this.lblRoom.Text = "Комната:";
             // 
-            // lblFilm
+            // btnRemove
             // 
-            this.lblFilm.AutoSize = true;
-            this.lblFilm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblFilm.Location = new System.Drawing.Point(9, 4);
-            this.lblFilm.Name = "lblFilm";
-            this.lblFilm.Size = new System.Drawing.Size(61, 18);
-            this.lblFilm.TabIndex = 0;
-            this.lblFilm.Text = "Фильм:";
-            // 
-            // cbFilm
-            // 
-            this.cbFilm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbFilm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbFilm.FormattingEnabled = true;
-            this.cbFilm.Location = new System.Drawing.Point(130, 1);
-            this.cbFilm.Name = "cbFilm";
-            this.cbFilm.Size = new System.Drawing.Size(241, 26);
-            this.cbFilm.TabIndex = 1;
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRemove.Location = new System.Drawing.Point(12, 164);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(100, 26);
+            this.btnRemove.TabIndex = 3;
+            this.btnRemove.Text = "Удалить";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.RemoveSession);
             // 
             // SessionManagement
             // 
@@ -295,5 +308,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Time;
         private System.Windows.Forms.ComboBox cbFilm;
         private System.Windows.Forms.Label lblFilm;
+        private System.Windows.Forms.Button btnRemove;
     }
 }

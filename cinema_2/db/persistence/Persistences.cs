@@ -172,6 +172,7 @@ namespace cinema_2.db.persistence
                                 on s.RoomId equals r.Id
                                 join f in context.Film
                                 on s.FilmId equals f.Id
+                                where s.Id == id
                                 select new Session()
                                 {
                                     Id = s.Id,

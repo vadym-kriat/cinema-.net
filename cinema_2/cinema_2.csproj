@@ -173,6 +173,7 @@
     <Compile Include="forms\FilmManagement.Designer.cs">
       <DependentUpon>FilmManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\messages\MessageBoxManager.cs" />
     <Compile Include="forms\SessionManagement.cs">
       <SubType>Form</SubType>
     </Compile>

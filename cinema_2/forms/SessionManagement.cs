@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using cinema_2.models;
 using cinema_2.db.persistence;
+using cinema_2.forms.messages;
 
 namespace cinema_2.forms
 {
@@ -29,6 +30,35 @@ namespace cinema_2.forms
             LoadFilmList();
         }
 
+        private void RemoveSession(object sender, EventArgs e)
+        {
+            SessionRow sessionRow = (SessionRow)dgvSessions.CurrentRow.DataBoundItem;
+            Session session = sessionPersistance.FindById(sessionRow.Id);
+            sessionPersistance.Remove(session);
+            LoadAllSessions();
+        }
+
+        private void AddSession(object sender, EventArgs e)
+        {
+            Film film = (Film)cbFilm.SelectedItem;
+            Room room = (Room)cbRoom.SelectedItem;
+            DateTime date = dtpDate.Value;
+            TimeSpan time = dtpTime.Value.TimeOfDay;
+
+            if (film == null || room == null)
+            {
+                MessageBoxManager.Exclamation("Invalid data", "Chose film and room.");
+                return;
+            }
+
+            sessionPersistance.Save(new Session() {
+                FilmId = film.Id,
+                RoomId = room.Id,
+                DateTime = date.Date + time
+            });
+            LoadAllSessions();
+        }
+
         private void LoadRoomList()
         {
             cbRoom.Items.Clear();
@@ -39,11 +69,6 @@ namespace cinema_2.forms
         {
             cbFilm.Items.Clear();
             cbFilm.Items.AddRange(filmPersistance.FindAll().ToArray());
-        }
-
-        private void AddSession(object sender, EventArgs e)
-        {
-            LoadAllSessions();
         }
 
         private void LoadAllSessions()
