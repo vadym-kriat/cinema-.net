@@ -32,10 +32,16 @@ namespace cinema_2.forms
 
         private void RemoveSession(object sender, EventArgs e)
         {
-            SessionRow sessionRow = (SessionRow)dgvSessions.CurrentRow.DataBoundItem;
-            Session session = sessionPersistance.FindById(sessionRow.Id);
-            sessionPersistance.Remove(session);
-            LoadAllSessions();
+            if (dgvSessions.CurrentRow != null)
+            {
+                SessionRow sessionRow = (SessionRow)dgvSessions.CurrentRow.DataBoundItem;
+                Session session = sessionPersistance.FindById(sessionRow.Id);
+                sessionPersistance.Remove(session);
+                LoadAllSessions();
+            } else
+            {
+                MessageBoxManager.Exclamation("Ошибка удаления", "Нужно выбрать сеанс из списка.");
+            }
         }
 
         private void AddSession(object sender, EventArgs e)

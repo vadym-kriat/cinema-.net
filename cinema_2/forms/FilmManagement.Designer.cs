@@ -202,10 +202,10 @@
             // 
             this.Duration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Duration.DataPropertyName = "Duration";
-            this.Duration.HeaderText = "Продолжительность (мин";
+            this.Duration.HeaderText = "Продолжительность (мин)";
             this.Duration.Name = "Duration";
             this.Duration.ReadOnly = true;
-            this.Duration.Width = 195;
+            this.Duration.Width = 200;
             // 
             // Country
             // 

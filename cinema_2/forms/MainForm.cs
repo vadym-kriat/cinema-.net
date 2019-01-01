@@ -87,7 +87,7 @@ namespace cinema_2
 
             for (int i = 0; i < films.Count; i++)
             {
-                FilmView view = new FilmView(films[i], i);
+                ImageFilmViewer view = new ImageFilmViewer(films[i]);
                 pFilmContainer.Controls.Add(view);
             }
         }
