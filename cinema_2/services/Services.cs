@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using cinema_2.db.persistence;
@@ -8,7 +10,7 @@ using cinema_2.models;
 
 namespace cinema_2.services
 {
-    class BookingService
+    public class BookingService
     {
         private BookingPersistance _bookingPersistance;
         private SessionPersistance _sessionPersistance;
@@ -58,6 +60,23 @@ namespace cinema_2.services
             };
 
             return _bookingPersistance.Save(b);
+        }
+    }
+
+    public class ImageService
+    {
+        public static byte[] ImageToByteArray(Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return ms.ToArray();
+        }
+
+        public static Image ByteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
         }
     }
 }

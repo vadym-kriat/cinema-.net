@@ -46,6 +46,7 @@
             this.Genre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panelGvd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFilms)).BeginInit();
@@ -138,7 +139,8 @@
             this.Country,
             this.Genre,
             this.Cost,
-            this.Type});
+            this.Type,
+            this.Image});
             this.dgvFilms.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFilms.GridColor = System.Drawing.SystemColors.Control;
             this.dgvFilms.Location = new System.Drawing.Point(1, 1);
@@ -194,7 +196,7 @@
             this.FirstPerformance.HeaderText = "Дата выхода";
             this.FirstPerformance.Name = "FirstPerformance";
             this.FirstPerformance.ReadOnly = true;
-            this.FirstPerformance.Width = 114;
+            this.FirstPerformance.Width = 124;
             // 
             // Duration
             // 
@@ -216,7 +218,7 @@
             // 
             // Genre
             // 
-            this.Genre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Genre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Genre.DataPropertyName = "Genre";
             this.Genre.HeaderText = "Жанр";
             this.Genre.Name = "Genre";
@@ -240,6 +242,17 @@
             this.Type.Name = "Type";
             this.Type.ReadOnly = true;
             this.Type.Width = 58;
+            // 
+            // Image
+            // 
+            this.Image.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Image.DataPropertyName = "Image";
+            this.Image.HeaderText = "Изображение";
+            this.Image.Name = "Image";
+            this.Image.ReadOnly = true;
+            this.Image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Image.Width = 129;
             // 
             // FilmManagement
             // 
@@ -277,5 +290,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Genre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewImageColumn Image;
     }
 }

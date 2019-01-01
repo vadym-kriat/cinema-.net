@@ -13,6 +13,7 @@ using cinema_2.models;
 using cinema_2.db.persistence;
 using cinema_2.exceptions;
 using cinema_2.forms.messages;
+using cinema_2.services;
 
 namespace cinema_2
 {
@@ -48,7 +49,7 @@ namespace cinema_2
                     Genre = txtGenre.Text,
                     Cost = float.Parse(txtCost.Text),
                     Type = txtFormat.Text,
-                    Image = ImageToByteArray(pbImage.Image)
+                    Image = ImageService.ImageToByteArray(pbImage.Image)
                 };
                 if (id != 0)
                 {
@@ -82,6 +83,8 @@ namespace cinema_2
                 txtGenre.Text = film.Genre;
                 txtCost.Text = film.Cost.ToString();
                 txtFormat.Text = film.Type;
+                pbImage.Image = ImageService.ByteArrayToImage(film.Image);
+                ShowPictureBox();
             }
         }
 
@@ -128,11 +131,6 @@ namespace cinema_2
             tlpImage.Controls.Add(label, 0, 0);
         }
 
-        private byte[] ImageToByteArray(Image imageIn)
-        {
-            MemoryStream ms = new MemoryStream();
-            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
-            return ms.ToArray();
-        }
+        
     }
 }
