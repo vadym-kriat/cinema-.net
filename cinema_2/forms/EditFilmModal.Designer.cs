@@ -151,7 +151,7 @@
             // 
             // pbImage
             // 
-            this.pbImage.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pbImage.BackColor = System.Drawing.SystemColors.Control;
             this.pbImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbImage.Location = new System.Drawing.Point(3, 3);
             this.pbImage.Name = "pbImage";

@@ -46,7 +46,6 @@
             this.Genre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panelGvd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFilms)).BeginInit();
@@ -117,6 +116,7 @@
             // 
             // dgvFilms
             // 
+            this.dgvFilms.AutoGenerateColumns = false;
             this.dgvFilms.AllowUserToResizeRows = false;
             this.dgvFilms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFilms.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -139,8 +139,7 @@
             this.Country,
             this.Genre,
             this.Cost,
-            this.Type,
-            this.Image});
+            this.Type});
             this.dgvFilms.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFilms.GridColor = System.Drawing.SystemColors.Control;
             this.dgvFilms.Location = new System.Drawing.Point(1, 1);
@@ -243,17 +242,6 @@
             this.Type.ReadOnly = true;
             this.Type.Width = 58;
             // 
-            // Image
-            // 
-            this.Image.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Image.DataPropertyName = "Image";
-            this.Image.HeaderText = "Изображение";
-            this.Image.Name = "Image";
-            this.Image.ReadOnly = true;
-            this.Image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Image.Width = 129;
-            // 
             // FilmManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +278,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Genre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
-        private System.Windows.Forms.DataGridViewImageColumn Image;
     }
 }

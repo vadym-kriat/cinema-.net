@@ -21,6 +21,7 @@ namespace cinema_2
     {
         private FilmPersistence _filmPersistence;
         private long id;
+        private static readonly int MAX_HEIGHT = 500;
 
         public EditFilmModal()
         {
@@ -32,6 +33,7 @@ namespace cinema_2
         public void SaveFilm(Film film)
         {
             id = film.Id;
+            Image test = ImageService.ByteArrayToImage(film.Image);
             FillFields(film);
         }
 
@@ -97,13 +99,14 @@ namespace cinema_2
             };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                pbImage.Image = new Bitmap(ofd.FileName);
+                pbImage.Image = OpenAndResize(ofd.FileName);
                 ShowPictureBox();
             }
         }
 
         private void ClearPictureBox(object sender, EventArgs e)
         {
+            pbImage.Image = null;
             ShowNotImageLoadedLabel();
         }
 
@@ -131,6 +134,15 @@ namespace cinema_2
             tlpImage.Controls.Add(label, 0, 0);
         }
 
-        
+        private Bitmap OpenAndResize(string fileName)
+        {
+            Bitmap source = new Bitmap(fileName);
+            float ratio = MAX_HEIGHT / source.Height;
+            if (ratio != 0)
+            {
+                return new Bitmap(source, (int) (source.Width * ratio), (int) (source.Height * ratio));
+            }
+            return source;
+        }
     }
 }

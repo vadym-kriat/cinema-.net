@@ -65,15 +65,25 @@ namespace cinema_2.services
 
     public class ImageService
     {
-        public static byte[] ImageToByteArray(Image imageIn)
+        public static byte[] ImageToByteArray(Image image)
         {
+            if (image == null)
+            {
+                return null;
+            }
+
             MemoryStream ms = new MemoryStream();
-            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
             return ms.ToArray();
         }
 
         public static Image ByteArrayToImage(byte[] byteArrayIn)
         {
+            if (byteArrayIn == null)
+            {
+                return null;
+            }
+
             MemoryStream ms = new MemoryStream(byteArrayIn);
             Image returnImage = Image.FromStream(ms);
             return returnImage;
