@@ -14,19 +14,31 @@ namespace cinema_2.forms
 {
     public partial class SessionManagement : Form
     {
-        SessionPersistance sessionPersistance;
+        private SessionPersistance sessionPersistance;
+        private FilmPersistence filmPersistance;
+        private RoomPersistence roomPersistence;
 
         public SessionManagement()
         {
             InitializeComponent();
             sessionPersistance = new SessionPersistance();
+            filmPersistance = new FilmPersistence();
+            roomPersistence = new RoomPersistence();
             LoadAllSessions();
+            LoadRoomList();
+            LoadFilmList();
         }
 
-        public void SaveRoomList(List<Room> rooms)
+        private void LoadRoomList()
         {
             cbRoom.Items.Clear();
-            cbRoom.Items.AddRange(rooms.Select(r => r.Name).ToArray());
+            cbRoom.Items.AddRange(roomPersistence.FindAll().ToArray());
+        }
+
+        private void LoadFilmList()
+        {
+            cbFilm.Items.Clear();
+            cbFilm.Items.AddRange(filmPersistance.FindAll().ToArray());
         }
 
         private void AddSession(object sender, EventArgs e)

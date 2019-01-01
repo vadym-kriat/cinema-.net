@@ -45,6 +45,11 @@ namespace cinema_2.models
         public float Cost { get => _cost; set => _cost = value; }
         public string Type { get => _type; set => _type = value; }
         public string Description { get => _description; set => _description = value; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
     public class Room
@@ -64,7 +69,7 @@ namespace cinema_2.models
 
         public override string ToString()
         {
-            return "Room: id = " + _id + " name = " + _name + " roows = " + _rows;
+            return Name;
         }
 
         public void AddRow(Row row)

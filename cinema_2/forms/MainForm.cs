@@ -51,9 +51,7 @@ namespace cinema_2
 
         private void OpenSessionManagementModal(object sender, EventArgs e)
         {
-            List<Room> rooms = roomPersistence.FindAll();
             SessionManagement sessionManagement = new SessionManagement();
-            sessionManagement.SaveRoomList(rooms);
             sessionManagement.ShowDialog();
         }
 

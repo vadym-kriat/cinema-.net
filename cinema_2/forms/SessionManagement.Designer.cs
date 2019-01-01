@@ -44,6 +44,8 @@
             this.cbRoom = new System.Windows.Forms.ComboBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblRoom = new System.Windows.Forms.Label();
+            this.lblFilm = new System.Windows.Forms.Label();
+            this.cbFilm = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSessions)).BeginInit();
             this.dgvPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -95,6 +97,7 @@
             this.Film.DataPropertyName = "FilmName";
             this.Film.HeaderText = "Фильм";
             this.Film.Name = "Film";
+            this.Film.ReadOnly = true;
             // 
             // Room
             // 
@@ -146,7 +149,9 @@
             this.panel1.Controls.Add(this.dtpTime);
             this.panel1.Controls.Add(this.dtpDate);
             this.panel1.Controls.Add(this.lblTime);
+            this.panel1.Controls.Add(this.cbFilm);
             this.panel1.Controls.Add(this.cbRoom);
+            this.panel1.Controls.Add(this.lblFilm);
             this.panel1.Controls.Add(this.lblDate);
             this.panel1.Controls.Add(this.lblRoom);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -159,7 +164,7 @@
             // 
             this.btnAddSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddSession.Location = new System.Drawing.Point(274, 122);
+            this.btnAddSession.Location = new System.Drawing.Point(271, 164);
             this.btnAddSession.Name = "btnAddSession";
             this.btnAddSession.Size = new System.Drawing.Size(100, 26);
             this.btnAddSession.TabIndex = 3;
@@ -173,7 +178,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTime.Location = new System.Drawing.Point(133, 81);
+            this.dtpTime.Location = new System.Drawing.Point(130, 123);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowUpDown = true;
             this.dtpTime.Size = new System.Drawing.Size(241, 24);
@@ -184,7 +189,7 @@
             this.dtpDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dtpDate.Location = new System.Drawing.Point(133, 41);
+            this.dtpDate.Location = new System.Drawing.Point(130, 83);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(241, 24);
             this.dtpDate.TabIndex = 2;
@@ -193,7 +198,7 @@
             // 
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTime.Location = new System.Drawing.Point(12, 84);
+            this.lblTime.Location = new System.Drawing.Point(9, 126);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(57, 18);
             this.lblTime.TabIndex = 0;
@@ -205,7 +210,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbRoom.FormattingEnabled = true;
-            this.cbRoom.Location = new System.Drawing.Point(133, 0);
+            this.cbRoom.Location = new System.Drawing.Point(130, 42);
             this.cbRoom.Name = "cbRoom";
             this.cbRoom.Size = new System.Drawing.Size(241, 26);
             this.cbRoom.TabIndex = 1;
@@ -214,7 +219,7 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblDate.Location = new System.Drawing.Point(12, 44);
+            this.lblDate.Location = new System.Drawing.Point(9, 86);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(47, 18);
             this.lblDate.TabIndex = 0;
@@ -224,11 +229,32 @@
             // 
             this.lblRoom.AutoSize = true;
             this.lblRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblRoom.Location = new System.Drawing.Point(12, 3);
+            this.lblRoom.Location = new System.Drawing.Point(9, 45);
             this.lblRoom.Name = "lblRoom";
             this.lblRoom.Size = new System.Drawing.Size(73, 18);
             this.lblRoom.TabIndex = 0;
             this.lblRoom.Text = "Комната:";
+            // 
+            // lblFilm
+            // 
+            this.lblFilm.AutoSize = true;
+            this.lblFilm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblFilm.Location = new System.Drawing.Point(9, 4);
+            this.lblFilm.Name = "lblFilm";
+            this.lblFilm.Size = new System.Drawing.Size(61, 18);
+            this.lblFilm.TabIndex = 0;
+            this.lblFilm.Text = "Фильм:";
+            // 
+            // cbFilm
+            // 
+            this.cbFilm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbFilm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbFilm.FormattingEnabled = true;
+            this.cbFilm.Location = new System.Drawing.Point(130, 1);
+            this.cbFilm.Name = "cbFilm";
+            this.cbFilm.Size = new System.Drawing.Size(241, 26);
+            this.cbFilm.TabIndex = 1;
             // 
             // SessionManagement
             // 
@@ -267,5 +293,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Film;
         private System.Windows.Forms.DataGridViewTextBoxColumn Room;
         private System.Windows.Forms.DataGridViewTextBoxColumn Time;
+        private System.Windows.Forms.ComboBox cbFilm;
+        private System.Windows.Forms.Label lblFilm;
     }
 }
