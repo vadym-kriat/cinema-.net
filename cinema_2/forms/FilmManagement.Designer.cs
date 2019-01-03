@@ -194,7 +194,7 @@
             this.FirstPerformance.HeaderText = "Дата выхода";
             this.FirstPerformance.Name = "FirstPerformance";
             this.FirstPerformance.ReadOnly = true;
-            this.FirstPerformance.Width = 124;
+            this.FirstPerformance.Width = 114;
             // 
             // Duration
             // 
@@ -252,6 +252,7 @@
             this.Name = "FilmManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Film Management";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panelGvd.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFilms)).EndInit();
