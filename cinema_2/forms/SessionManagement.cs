@@ -32,16 +32,26 @@ namespace cinema_2.forms
 
         private void RemoveSession(object sender, EventArgs e)
         {
-            if (dgvSessions.CurrentRow != null)
+            if (dgvSessions.CurrentRow == null)
+            {
+                MessageBoxManager.Exclamation("Ошибка удаления", "Нужно выбрать сеанс из списка.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+            "Вы действительно хотите удалить фильм?", "Удалить фильм",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+            MessageBoxDefaultButton.Button1);
+
+            if (DialogResult.Yes == result)
             {
                 SessionRow sessionRow = (SessionRow)dgvSessions.CurrentRow.DataBoundItem;
                 Session session = sessionPersistance.FindById(sessionRow.Id);
                 sessionPersistance.Remove(session);
                 LoadAllSessions();
-            } else
-            {
-                MessageBoxManager.Exclamation("Ошибка удаления", "Нужно выбрать сеанс из списка.");
             }
+
+            
         }
 
         private void AddSession(object sender, EventArgs e)

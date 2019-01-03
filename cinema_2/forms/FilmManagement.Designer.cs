@@ -38,6 +38,7 @@
             this.panelGvd = new System.Windows.Forms.Panel();
             this.dgvFilms = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstPerformance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,14 +62,14 @@
             this.panel1.Controls.Add(this.btnCreate);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(913, 410);
+            this.panel1.Size = new System.Drawing.Size(964, 410);
             this.panel1.TabIndex = 0;
             // 
             // btnRemove
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnRemove.Location = new System.Drawing.Point(784, 64);
+            this.btnRemove.Location = new System.Drawing.Point(835, 64);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(130, 26);
             this.btnRemove.TabIndex = 1;
@@ -80,7 +81,7 @@
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnEdit.Location = new System.Drawing.Point(784, 32);
+            this.btnEdit.Location = new System.Drawing.Point(835, 32);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(130, 26);
             this.btnEdit.TabIndex = 1;
@@ -92,7 +93,7 @@
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCreate.Location = new System.Drawing.Point(784, 0);
+            this.btnCreate.Location = new System.Drawing.Point(835, 0);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(130, 26);
             this.btnCreate.TabIndex = 1;
@@ -110,7 +111,7 @@
             this.panelGvd.Location = new System.Drawing.Point(12, 12);
             this.panelGvd.Name = "panelGvd";
             this.panelGvd.Padding = new System.Windows.Forms.Padding(1);
-            this.panelGvd.Size = new System.Drawing.Size(778, 410);
+            this.panelGvd.Size = new System.Drawing.Size(829, 410);
             this.panelGvd.TabIndex = 2;
             // 
             // dgvFilms
@@ -131,6 +132,7 @@
             this.dgvFilms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFilms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
+            this.NameF,
             this.Description,
             this.FirstPerformance,
             this.Duration,
@@ -156,7 +158,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dgvFilms.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFilms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFilms.Size = new System.Drawing.Size(776, 408);
+            this.dgvFilms.Size = new System.Drawing.Size(827, 408);
             this.dgvFilms.TabIndex = 0;
             // 
             // Id
@@ -167,6 +169,14 @@
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Width = 47;
+            // 
+            // NameF
+            // 
+            this.NameF.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NameF.DataPropertyName = "Name";
+            this.NameF.HeaderText = "Название";
+            this.NameF.Name = "NameF";
+            this.NameF.ReadOnly = true;
             // 
             // Description
             // 
@@ -184,7 +194,7 @@
             this.FirstPerformance.HeaderText = "Дата выхода";
             this.FirstPerformance.Name = "FirstPerformance";
             this.FirstPerformance.ReadOnly = true;
-            this.FirstPerformance.Width = 114;
+            this.FirstPerformance.Width = 124;
             // 
             // Duration
             // 
@@ -235,7 +245,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(937, 434);
+            this.ClientSize = new System.Drawing.Size(988, 434);
             this.Controls.Add(this.panelGvd);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(725, 373);
@@ -257,8 +267,9 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Panel panelGvd;
         private System.Windows.Forms.DataGridView dgvFilms;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameF;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstPerformance;
         private System.Windows.Forms.DataGridViewTextBoxColumn Duration;

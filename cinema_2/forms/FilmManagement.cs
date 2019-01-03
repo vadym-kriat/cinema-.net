@@ -34,9 +34,17 @@ namespace cinema_2.forms
 
         private void RemoveFilm(object sender, EventArgs e)
         {
-            Film film = (Film) dgvFilms.CurrentRow.DataBoundItem;
-            _filmPersistence.Remove(film);
-            UpdateTable();
+            DialogResult result = MessageBox.Show(
+                "Вы действительно хотите удалить фильм?", "Удалить фильм",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1);
+            
+            if (DialogResult.Yes == result)
+            {
+                Film film = (Film)dgvFilms.CurrentRow.DataBoundItem;
+                _filmPersistence.Remove(film);
+                UpdateTable();
+            }
         }
 
         private void EditFilm(object sender, EventArgs e)
