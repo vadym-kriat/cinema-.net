@@ -39,7 +39,7 @@ namespace cinema_2.forms
             }
 
             DialogResult result = MessageBox.Show(
-            "Вы действительно хотите удалить фильм?", "Удалить фильм",
+            "Вы действительно хотите удалить сеанс?", "Удалить фильм",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button1);
 
