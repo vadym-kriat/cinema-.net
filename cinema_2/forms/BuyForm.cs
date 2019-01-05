@@ -18,7 +18,7 @@ namespace cinema_2.forms
     {
         private List<Seat> seats;
         private Session session;
-        private static readonly Regex PHONE_REGEX = new Regex(@"^\d{11}$");
+        private static readonly Regex PHONE_REGEX = new Regex(@"^\d{10}$");
 
         private CustomerPersistance customerPersistance;
         private BookingPersistance bookingPersistance;
@@ -67,7 +67,7 @@ namespace cinema_2.forms
                 return false;
             }
 
-            if (tbPhone.Text.Length < 10 || PHONE_REGEX.Match(tbPhone.Text).Success)
+            if (tbPhone.Text.Length < 10 || PHONE_REGEX.IsMatch(tbPhone.Text))
             {
                 MessageBoxManager.Exclamation("Неверные данные", "Неверный номер телефона.");
                 return false;
