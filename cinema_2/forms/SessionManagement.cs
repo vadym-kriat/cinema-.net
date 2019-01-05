@@ -114,13 +114,13 @@ namespace cinema_2.forms
                 DateTime = s.DateTime
             }).OrderBy(sr => sr.FilmName).ToList();
         }
-    }
 
-    class SessionRow
-    {
-        public long Id { get; set; }
-        public string FilmName { get; set; }
-        public string RoomName { get; set; }
-        public DateTime DateTime { get; set; }
+        private class SessionRow
+        {
+            public long Id { get; set; }
+            public string FilmName { get; set; }
+            public string RoomName { get; set; }
+            public DateTime DateTime { get; set; }
+        }
     }
 }

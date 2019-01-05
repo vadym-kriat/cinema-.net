@@ -81,6 +81,20 @@ namespace cinema_2.models
             Rows.Add(row);
         }
 
+        public int MaxSeatsInRow()
+        {
+            int max = 0;
+            foreach (var row in _rows)
+            {
+                if (row.Seats > max)
+                {
+                    max = row.Seats;
+                }
+            }
+
+            return max;
+        }
+
         public Row GetRowByNumber(int number)
         {
             var row = (from r in _rows where r.Number == number select r).SingleOrDefault();

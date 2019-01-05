@@ -251,6 +251,32 @@ namespace cinema_2.db.persistence
             }
             return false;
         }
+
+        public List<Session> FindAllByFilmId(long filmId)
+        {
+            using (MySqlDbContext context = new MySqlDbContext())
+            {
+                var session = (from s in context.Session
+                               join r in context.Room on s.RoomId equals r.Id
+                               join f in context.Film on s.FilmId equals f.Id
+                               where s.FilmId == filmId
+                               select new Session()
+                               {
+                                   Id = s.Id,
+                                   FilmId = s.FilmId,
+                                   Film = f,
+                                   RoomId = s.RoomId,
+                                   Room = new Room()
+                                   {
+                                       Id = r.Id,
+                                       Name = r.Name,
+                                       Rows = (from t in r.Rows where t.RoomId == r.Id select t).ToList()
+                                   },
+                                   DateTime = s.DateTime
+                               }).ToList();
+                return session;
+            }
+        }
     }
 
     class BookingPersistance

@@ -7,7 +7,16 @@ namespace cinema_2.forms.components
 {
     public class FilmView : TableLayoutPanel
     {
+        private Film film;
+
         public FilmView(Film film) : base()
+        {
+            this.film = film;
+
+            Init();
+        }
+
+        private void Init()
         {
             ColumnCount = 1;
             ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -103,6 +112,7 @@ namespace cinema_2.forms.components
         private void Book(object sender, EventArgs e)
         {
             BookingForm bookingForm = new BookingForm();
+            bookingForm.SaveFilm(film);
             bookingForm.ShowDialog();
         }
     }
@@ -156,6 +166,124 @@ namespace cinema_2.forms.components
                 Text = "Ничего не найдено."
             };
             return label;
+        }
+    }
+
+    public class SeatView : Button
+    {
+        private bool active;
+        private int row;
+        private int number;
+
+        public SeatView(int row, int number) : base()
+        {
+            this.row = row;
+            this.number = number;
+
+            Init();
+        }
+
+        private void Init()
+        {
+            BackColor = System.Drawing.SystemColors.ActiveCaption;
+            Dock = DockStyle.Fill;
+            FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            FlatStyle = FlatStyle.Flat;
+            Location = new System.Drawing.Point(0, 0);
+            Text = number.ToString();
+            TabIndex = 0;
+            UseVisualStyleBackColor = false;
+            Click += new EventHandler(Book);
+        }
+
+        public void SetBooked(bool value)
+        {
+            active = value;
+            if (value)
+            {
+                BackColor = System.Drawing.Color.Orange;
+                FlatAppearance.BorderColor = System.Drawing.Color.Orange;
+                ForeColor = System.Drawing.Color.White;
+            } else
+            {
+                BackColor = System.Drawing.SystemColors.ActiveCaption;
+                FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+                ForeColor = System.Drawing.SystemColors.ControlText;
+            }
+        }
+
+        public bool Booked()
+        {
+            return active;
+        }
+
+        private void Book(object sender, EventArgs e)
+        {
+            SetBooked(!active);
+        }
+    }
+
+    public class RowInfo : Label
+    {
+        public RowInfo(int number) : base()
+        {
+            AutoSize = false;
+            Dock = DockStyle.Fill;
+            Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            Text = "" + number;
+        }
+    }
+
+    public class RoomView : TableLayoutPanel
+    {
+        private static readonly int SEAT_SIZE = 35;
+
+        public RoomView(Room room) : base()
+        {
+            int minWifth = SEAT_SIZE * room.MaxSeatsInRow();
+            int minHeight = SEAT_SIZE * room.Rows.Count; ;
+
+            CreateSeats(room);
+            Width = minWifth;
+            Height = minHeight;
+            MinimumSize = new System.Drawing.Size(minWifth, minHeight);
+            Location = new System.Drawing.Point(0, 0);
+            Dock = DockStyle.Fill;
+            BackColor = System.Drawing.SystemColors.ControlLight;
+        }
+
+        private void CreateSeats(Room room)
+        {
+            int max = room.MaxSeatsInRow();
+
+            ColumnCount = max;
+            int columnSize = 100 / max;
+            for (int i = 0; i < max; i++)
+            {
+                ColumnStyles.Add(new ColumnStyle(SizeType.Percent, columnSize));
+            }
+
+            int rowSize = 100 / room.Rows.Count;
+            RowCount = room.Rows.Count;
+            foreach (var row in room.Rows)
+            {
+                RowStyles.Add(new RowStyle(SizeType.Percent, rowSize));
+            }
+
+            for (int i = 0; i < room.Rows.Count; i++)
+            {
+                for (int j = 0; j < room.Rows[i].Seats; j++)
+                {
+                    int offset = (max - room.Rows[i].Seats) / 2;
+                    Controls.Add(new SeatView(i, j + 1), j + offset, i);
+                }
+            }
+        }
+
+        public void ResizeTo(int height, int width)
+        {
+            Height = height;
+            Width = width;
         }
     }
 }
