@@ -156,6 +156,12 @@
     <Compile Include="forms\BookingForm.Designer.cs">
       <DependentUpon>BookingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\BuyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\BuyForm.Designer.cs">
+      <DependentUpon>BuyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\components\Componentscs.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -209,6 +215,9 @@
   <ItemGroup>
     <EmbeddedResource Include="forms\BookingForm.resx">
       <DependentUpon>BookingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\BuyForm.resx">
+      <DependentUpon>BuyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\EditFilmModal.resx">
       <DependentUpon>EditFilmModal.cs</DependentUpon>

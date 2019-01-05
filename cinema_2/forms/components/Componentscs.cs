@@ -241,9 +241,24 @@ namespace cinema_2.forms.components
             return booked;
         }
 
+        public int Row()
+        {
+            return row;
+        }
+
+        public int Number()
+        {
+            return number;
+        }
+
         private void Book(object sender, EventArgs e)
         {
             SetActive(!active);
+        }
+
+        public void SubscribeOnClick(EventHandler handler)
+        {
+            Click += handler;
         }
     }
 
@@ -262,12 +277,12 @@ namespace cinema_2.forms.components
     {
         private static readonly int SEAT_SIZE = 35;
 
-        public RoomView(Room room) : base()
+        public RoomView(Room room, EventHandler handler) : base()
         {
             int minWifth = SEAT_SIZE * room.MaxSeatsInRow();
             int minHeight = SEAT_SIZE * room.Rows.Count; ;
 
-            CreateSeats(room);
+            CreateSeats(room, handler);
             Width = minWifth;
             Height = minHeight;
             MinimumSize = new System.Drawing.Size(minWifth, minHeight);
@@ -276,7 +291,7 @@ namespace cinema_2.forms.components
             BackColor = System.Drawing.SystemColors.ControlLight;
         }
 
-        private void CreateSeats(Room room)
+        private void CreateSeats(Room room, EventHandler handler)
         {
             int max = room.MaxSeatsInRow();
 
@@ -299,7 +314,11 @@ namespace cinema_2.forms.components
                 for (int j = 0; j < room.Rows[i].Seats; j++)
                 {
                     int offset = (max - room.Rows[i].Seats) / 2;
-                    Controls.Add(new SeatView(i, j + 1), j + offset, i);
+
+                    SeatView sw = new SeatView(i, j + 1);
+                    sw.SubscribeOnClick(handler);
+
+                    Controls.Add(sw, j + offset, i);
                 }
             }
         }
@@ -312,5 +331,6 @@ namespace cinema_2.forms.components
                 sw.SetBooked(true);
             }
         }
+
     }
 }

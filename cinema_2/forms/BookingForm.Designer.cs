@@ -243,6 +243,7 @@
             this.btnBuy.TabIndex = 5;
             this.btnBuy.Text = "Купить";
             this.btnBuy.UseVisualStyleBackColor = true;
+            this.btnBuy.Click += new System.EventHandler(this.Buy);
             // 
             // panel3
             // 

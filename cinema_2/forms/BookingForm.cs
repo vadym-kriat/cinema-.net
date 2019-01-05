@@ -19,6 +19,7 @@ namespace cinema_2.forms
         private SessionPersistance sessionPersistance;
         private BookingPersistance bookingPersistance;
         private List<Session> sessions;
+        private List<Seat> bookedSeats;
         private Session currentSession;
 
         private readonly static Dictionary<Label, string> lableMap = new Dictionary<Label, string>();
@@ -29,6 +30,7 @@ namespace cinema_2.forms
             sessionPersistance = new SessionPersistance();
             bookingPersistance = new BookingPersistance();
             sessions = new List<Session>();
+            bookedSeats = new List<Seat>();
 
             lableMap.Add(lblOneTicketCost, "Стоимость одного билета");
             lableMap.Add(lblAllTicketsCost, "Сумма");
@@ -68,7 +70,7 @@ namespace cinema_2.forms
 
         private void LoadRoomView(Room room)
         {
-            RoomView roomView = new RoomView(room);
+            RoomView roomView = new RoomView(room, new EventHandler(ClickOnSeat));
             roomView.SetBookedSeats(bookingPersistance.FindAllBySessionId(currentSession.Id));
 
             pSeats.Controls.Clear();
@@ -107,11 +109,61 @@ namespace cinema_2.forms
             }
         }
 
+        private void ClickOnSeat(object sender, EventArgs e)
+        {
+            SeatView sw = (SeatView)sender;
+            Seat seat = new Seat
+            {
+                Number = sw.Number(),
+                Row = sw.Row()
+            };
+            
+            if (bookedSeats.Contains(seat))
+            {
+                bookedSeats.Remove(seat);
+            } else
+            {
+                bookedSeats.Add(seat);
+            }
+        }
+
         private class SessionRow
         {
             public long Id { get; set; }
             public string RoomName { get; set; }
             public DateTime DateTime { get; set; }
+        }
+
+        private class Seat
+        {
+            public int Row { get; set;  }
+            public int Number { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                if (obj == null)
+                {
+                    return false;
+                }
+
+                if (obj.GetType() != this.GetType())
+                {
+                    return false;
+                }
+                Seat o = (Seat)obj;
+
+                return o.Row == Row && o.Number == Number;
+            }
+
+            public override int GetHashCode()
+            {
+                return Row + Number;
+            }
+        }
+
+        private void Buy(object sender, EventArgs e)
+        {
+            messages.MessageBoxManager.Exclamation("Count", bookedSeats.Count.ToString());
         }
     }
 }
