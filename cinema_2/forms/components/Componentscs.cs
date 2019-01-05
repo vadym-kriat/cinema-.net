@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using cinema_2.models;
 using cinema_2.services;
@@ -172,6 +173,7 @@ namespace cinema_2.forms.components
     public class SeatView : Button
     {
         private bool active;
+        private bool booked;
         private int row;
         private int number;
 
@@ -196,10 +198,10 @@ namespace cinema_2.forms.components
             Click += new EventHandler(Book);
         }
 
-        public void SetBooked(bool value)
+        public void SetActive(bool val)
         {
-            active = value;
-            if (value)
+            active = val;
+            if (val)
             {
                 BackColor = System.Drawing.Color.Orange;
                 FlatAppearance.BorderColor = System.Drawing.Color.Orange;
@@ -212,14 +214,36 @@ namespace cinema_2.forms.components
             }
         }
 
-        public bool Booked()
+        public void SetBooked(bool val)
+        {
+            booked = val;
+            Enabled = !val;
+            if (val)
+            {
+                BackColor = System.Drawing.Color.LightGray;
+                FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+                ForeColor = System.Drawing.Color.Gray;
+            } else
+            {
+                BackColor = System.Drawing.SystemColors.ActiveCaption;
+                FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+                ForeColor = System.Drawing.SystemColors.ControlText;
+            }
+        }
+
+        public bool Active()
         {
             return active;
         }
 
+        public bool Booked()
+        {
+            return booked;
+        }
+
         private void Book(object sender, EventArgs e)
         {
-            SetBooked(!active);
+            SetActive(!active);
         }
     }
 
@@ -280,10 +304,13 @@ namespace cinema_2.forms.components
             }
         }
 
-        public void ResizeTo(int height, int width)
+        public void SetBookedSeats(List<Booking> bookings)
         {
-            Height = height;
-            Width = width;
+            foreach (var seat in bookings)
+            {
+                SeatView sw = (SeatView)GetControlFromPosition(seat.Seat - 1, (int)seat.Row - 1);
+                sw.SetBooked(true);
+            }
         }
     }
 }

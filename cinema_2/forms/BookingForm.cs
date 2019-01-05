@@ -17,8 +17,9 @@ namespace cinema_2.forms
     {
         private Film film;
         private SessionPersistance sessionPersistance;
+        private BookingPersistance bookingPersistance;
         private List<Session> sessions;
-        private RoomView roomView;
+        private Session currentSession;
 
         private readonly static Dictionary<Label, string> lableMap = new Dictionary<Label, string>();
 
@@ -26,6 +27,7 @@ namespace cinema_2.forms
         {
             InitializeComponent();
             sessionPersistance = new SessionPersistance();
+            bookingPersistance = new BookingPersistance();
             sessions = new List<Session>();
 
             lableMap.Add(lblOneTicketCost, "Стоимость одного билета");
@@ -49,20 +51,25 @@ namespace cinema_2.forms
         private void LoadAllFilmSessions()
         {
             sessions = sessionPersistance.FindAllByFilmId(film.Id);
-            dgvSessions.DataSource = sessions.Select(s => new SessionRow
-            {
-                Id = s.Id,
-                RoomName = s.Room.Name,
-                DateTime = s.DateTime
-            }).OrderBy(sr => sr.DateTime).ToList();
 
-            //test
-            LoadRoomView(sessions[0].Room);
+            if (sessions.Count != 0)
+            {
+                dgvSessions.DataSource = sessions.Select(s => new SessionRow
+                {
+                    Id = s.Id,
+                    RoomName = s.Room.Name,
+                    DateTime = s.DateTime
+                }).OrderBy(sr => sr.DateTime).ToList();
+
+                currentSession = sessions.First();
+                LoadRoomView(currentSession.Room);
+            }
         }
 
         private void LoadRoomView(Room room)
         {
-            roomView = new RoomView(room);
+            RoomView roomView = new RoomView(room);
+            roomView.SetBookedSeats(bookingPersistance.FindAllBySessionId(currentSession.Id));
 
             pSeats.Controls.Clear();
             pSeats.Controls.Add(roomView);
@@ -87,19 +94,24 @@ namespace cinema_2.forms
         {
             lblType.Text = lableMap[lblType] + $" {type}";
         }
+        
+        private void ChangeSelectedItem(object sender, EventArgs e)
+        {
+            if (dgvSessions.CurrentRow != null)
+            {
+                SessionRow sessionRow = (SessionRow)dgvSessions.CurrentRow.DataBoundItem;
+                Session session = sessions.Find(s => s.Id == sessionRow.Id);
+
+                currentSession = session;
+                LoadRoomView(session.Room);
+            }
+        }
 
         private class SessionRow
         {
             public long Id { get; set; }
             public string RoomName { get; set; }
             public DateTime DateTime { get; set; }
-        }
-
-        private void ChangeSelectedItem(object sender, EventArgs e)
-        {
-            SessionRow sessionRow = (SessionRow)dgvSessions.CurrentRow.DataBoundItem;
-            Session session = sessions.Find(s => s.Id == sessionRow.Id);
-            LoadRoomView(session.Room);
         }
     }
 }

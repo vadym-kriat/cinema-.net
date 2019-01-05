@@ -301,6 +301,17 @@ namespace cinema_2.db.persistence
             }
         }
 
+        public List<Booking> FindAllBySessionId(long sessionId)
+        {
+            using (MySqlDbContext context = new MySqlDbContext())
+            {
+                var res = (from b in context.Booking
+                           where b.SessionId == sessionId
+                           select b).ToList();
+                return res;
+            }
+        }
+
         public List<Booking> FindAll()
         {
             using (MySqlDbContext context = new MySqlDbContext())
