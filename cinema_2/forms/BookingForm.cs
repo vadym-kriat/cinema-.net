@@ -42,12 +42,9 @@ namespace cinema_2.forms
         {
             this.film = film;
             lblFilmName.Text = this.film.Name;
-
-            SetOneTicketCost(film.Cost);
-            SetAllTicketsCost(0.0F);
-            SetType(film.Type);
-
+            
             LoadAllFilmSessions();
+            UpdateAllInfo();
         }
 
         private void LoadAllFilmSessions()
@@ -77,24 +74,57 @@ namespace cinema_2.forms
             pSeats.Controls.Add(roomView);
         }
 
-        private void SetOneTicketCost(float cost)
+        private void UpdateOneTicketCost()
         {
-            lblOneTicketCost.Text = lableMap[lblOneTicketCost] + $" {cost}";
+            float c = 0;
+            if (currentSession != null)
+            {
+                c = currentSession.Film.Cost;
+            }
+
+            lblOneTicketCost.Text = lableMap[lblOneTicketCost] + $" {c}";
         }
 
-        private void SetAllTicketsCost(float sum)
+        private void UpdateAllTicketsCost()
         {
-            lblAllTicketsCost.Text = lableMap[lblAllTicketsCost] + $" {sum}";
+            float c = 0;
+            if (currentSession != null)
+            {
+                c = bookedSeats.Count * currentSession.Film.Cost;
+            }
+
+            lblAllTicketsCost.Text = lableMap[lblAllTicketsCost] + $" {c}";
         }
 
-        private void SetDateTimeSession(DateTime date)
+        private void UpdateDateTimeSession()
         {
+            string date = "";
+            if (currentSession != null)
+            {
+                date = currentSession.DateTime.ToString("dd.MM.yyyy HH:mm");
+            }
+
             lblDateTime.Text = lableMap[lblDateTime] + $" {date}";
         }
 
-        private void SetType(string type)
+        private void UpdateType()
         {
+            string type = "";
+            if (currentSession != null)
+            {
+                type = currentSession.Film.Type;
+            }
+
             lblType.Text = lableMap[lblType] + $" {type}";
+        }
+
+        private void UpdateAllInfo()
+        {
+            bookedSeats.Clear();
+            UpdateOneTicketCost();
+            UpdateAllTicketsCost();
+            UpdateDateTimeSession();
+            UpdateType();
         }
         
         private void ChangeSelectedItem(object sender, EventArgs e)
@@ -106,6 +136,8 @@ namespace cinema_2.forms
 
                 currentSession = session;
                 LoadRoomView(session.Room);
+
+                UpdateAllInfo();
             }
         }
 
@@ -125,6 +157,13 @@ namespace cinema_2.forms
             {
                 bookedSeats.Add(seat);
             }
+
+            UpdateAllTicketsCost();
+        }
+
+        private void Buy(object sender, EventArgs e)
+        {
+            messages.MessageBoxManager.Exclamation("Count", bookedSeats.Count.ToString());
         }
 
         private class SessionRow
@@ -159,11 +198,6 @@ namespace cinema_2.forms
             {
                 return Row + Number;
             }
-        }
-
-        private void Buy(object sender, EventArgs e)
-        {
-            messages.MessageBoxManager.Exclamation("Count", bookedSeats.Count.ToString());
         }
     }
 }
