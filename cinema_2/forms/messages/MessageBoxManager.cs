@@ -16,6 +16,11 @@ namespace cinema_2.forms.messages
             Show(title, message, MessageBoxIcon.Exclamation);
         }
 
+        public static void Info(string title, string message)
+        {
+            Show(title, message, MessageBoxIcon.Information);
+        }
+
         private static void Show(string title, string message, MessageBoxIcon mbi)
         {
             MessageBox.Show(

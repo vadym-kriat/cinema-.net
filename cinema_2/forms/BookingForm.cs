@@ -125,6 +125,8 @@ namespace cinema_2.forms
             UpdateAllTicketsCost();
             UpdateDateTimeSession();
             UpdateType();
+
+            btnBuy.Enabled = false;
         }
         
         private void ChangeSelectedItem(object sender, EventArgs e)
@@ -158,12 +160,26 @@ namespace cinema_2.forms
                 bookedSeats.Add(seat);
             }
 
+            if (bookedSeats.Count == 0)
+            {
+                btnBuy.Enabled = false;
+            } else
+            {
+                btnBuy.Enabled = true;
+            }
+
             UpdateAllTicketsCost();
         }
 
         private void Buy(object sender, EventArgs e)
         {
-            messages.MessageBoxManager.Exclamation("Count", bookedSeats.Count.ToString());
+            BuyForm buyForm = new BuyForm();
+            buyForm.SetInfo(bookedSeats, currentSession);
+
+            buyForm.ShowDialog();
+
+            LoadRoomView(currentSession.Room);
+            UpdateAllInfo();
         }
 
         private class SessionRow
@@ -172,32 +188,32 @@ namespace cinema_2.forms
             public string RoomName { get; set; }
             public DateTime DateTime { get; set; }
         }
+    }
 
-        private class Seat
+    public class Seat
+    {
+        public int Row { get; set; }
+        public int Number { get; set; }
+
+        public override bool Equals(object obj)
         {
-            public int Row { get; set;  }
-            public int Number { get; set; }
-
-            public override bool Equals(object obj)
+            if (obj == null)
             {
-                if (obj == null)
-                {
-                    return false;
-                }
-
-                if (obj.GetType() != this.GetType())
-                {
-                    return false;
-                }
-                Seat o = (Seat)obj;
-
-                return o.Row == Row && o.Number == Number;
+                return false;
             }
 
-            public override int GetHashCode()
+            if (obj.GetType() != this.GetType())
             {
-                return Row + Number;
+                return false;
             }
+            Seat o = (Seat)obj;
+
+            return o.Row == Row && o.Number == Number;
+        }
+
+        public override int GetHashCode()
+        {
+            return Row + Number;
         }
     }
 }

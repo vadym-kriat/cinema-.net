@@ -315,7 +315,7 @@ namespace cinema_2.forms.components
                 {
                     int offset = (max - room.Rows[i].Seats) / 2;
 
-                    SeatView sw = new SeatView(i, j + 1);
+                    SeatView sw = new SeatView(i + 1, j + 1);
                     sw.SubscribeOnClick(handler);
 
                     Controls.Add(sw, j + offset, i);

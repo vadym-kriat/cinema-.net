@@ -159,7 +159,7 @@
             // 
             // tblInfo
             // 
-            this.tblInfo.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tblInfo.BackColor = System.Drawing.SystemColors.Control;
             this.tblInfo.ColumnCount = 1;
             this.tblInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblInfo.Controls.Add(this.lblDateTime, 0, 2);
