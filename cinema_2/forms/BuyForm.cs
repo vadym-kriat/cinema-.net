@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using cinema_2.models;
+using cinema_2.services;
 using cinema_2.db.persistence;
 using cinema_2.forms.messages;
 
@@ -32,6 +33,11 @@ namespace cinema_2.forms
             bookingPersistance = new BookingPersistance();
 
             UpdateInfo();
+
+            //test
+            tbFirstName.Text = "Мария";
+            tbLastName.Text = "Петрова";
+            tbPhone.Text = "1234567890";
         }
 
         public void SetInfo(List<Seat> seats, Session session)
@@ -67,7 +73,7 @@ namespace cinema_2.forms
                 return false;
             }
 
-            if (tbPhone.Text.Length < 10 || PHONE_REGEX.IsMatch(tbPhone.Text))
+            if (tbPhone.Text.Length < 10)
             {
                 MessageBoxManager.Exclamation("Неверные данные", "Неверный номер телефона.");
                 return false;
@@ -91,12 +97,18 @@ namespace cinema_2.forms
 
                 foreach (var seat in seats)
                 {
-                    bookingPersistance.Save(new Booking {
+                    Booking ticket = new Booking
+                    {
                         CustomerId = customer.Id,
+                        Customer = customer,
                         SessionId = session.Id,
+                        Session = session,
                         Row = seat.Row,
                         Seat = seat.Number
-                    });
+                    };
+
+                    bookingPersistance.Save(ticket);
+                    PDFFileService.SaveTicketToPDF(ticket);
                 }
 
                 MessageBoxManager.Info("Бронирование", "Места успешно забронированы!");
