@@ -7,11 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using PdfSharp.Pdf;
-using PdfSharp.Charting;
-using PdfSharp.Fonts;
-using PdfSharp.Forms;
 using PdfSharp.Drawing;
-using cinema_2.db.persistence;
+using PdfSharp.Drawing.BarCodes;
 using cinema_2.models;
 
 namespace cinema_2.services
@@ -26,13 +23,14 @@ namespace cinema_2.services
         private static readonly XFont BOLD_TEXT_FONT = new XFont("Times New Roman", 14, XFontStyle.Bold, FONT_OPTIONS);
 
         private static readonly int ROW_OFFSET = 45;
-        private static readonly int COLUMN_OFFSET = 300;
-        private static readonly int MARGIN_LEFT = 45;
+        private static readonly int COLUMN_OFFSET = 250;
+        private static readonly int MARGIN_LEFT = 35;
+
+        private static readonly string ROOT_PATH = AppDomain.CurrentDomain.BaseDirectory;
 
         public static void SaveTicketToPDF(Booking booking)
         {
             PdfDocument document = new PdfDocument();
-
 
             PdfPage page = document.AddPage();
 
@@ -48,10 +46,12 @@ namespace cinema_2.services
             DrawTextBlock(gfx,
                "Номер заказа", booking.Id.ToString(), 1, 2);
             DrawTextBlock(gfx,
-                "Начало", booking.Session.DateTime.ToString("dd.MM.yyyy HH: mm"), 2, 2);
+                "Начало", booking.Session.DateTime.ToString("dd.MM.yyyy HH:mm"), 2, 2);
 
+            DrawBarCode(gfx, $"ticket-id-{booking.Id}", booking.Id);
+            DrawBorder(gfx, page);
 
-            string filename = $"{booking.Id}-ticket.pdf";
+            string filename = $"{ROOT_PATH}/tickets/{booking.Id}-ticket.pdf";
             document.Save(filename);
         }
 
@@ -64,6 +64,29 @@ namespace cinema_2.services
                 x, y);
             gfx.DrawString(text, BOLD_TEXT_FONT, XBrushes.Black,
                 x, y + 18);
+        }
+
+        private static void DrawBarCode(XGraphics gfx, string barcodeText, long id)
+        {
+            Code3of9Standard bc39 = new Code3of9Standard(barcodeText, new XSize(90, 40));
+            bc39.Text = id.ToString();
+            double width = ROW_OFFSET * 3;
+            bc39.Size = new XSize(width, width / 3);
+            bc39.TextLocation = TextLocation.Above;
+            bc39.Direction = CodeDirection.BottomToTop;
+
+            gfx.DrawBarCode(bc39, XBrushes.Black, new XPoint(520, 163));
+        }
+
+        private static void DrawBorder(XGraphics gfx, PdfPage page)
+        {
+            XRect rect = new XRect(10, 10, page.Width - 20, ROW_OFFSET * 4 - 5);
+
+            XFont font = new XFont("Verdana", 5);
+            XBrush brush = XBrushes.Purple;
+            XStringFormat format = new XStringFormat();
+
+            gfx.DrawRectangle(XPens.Black, rect);
         }
     }
 

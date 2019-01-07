@@ -33,11 +33,6 @@ namespace cinema_2.forms
             bookingPersistance = new BookingPersistance();
 
             UpdateInfo();
-
-            //test
-            tbFirstName.Text = "Мария";
-            tbLastName.Text = "Петрова";
-            tbPhone.Text = "1234567890";
         }
 
         public void SetInfo(List<Seat> seats, Session session)

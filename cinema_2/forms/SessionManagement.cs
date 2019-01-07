@@ -16,6 +16,7 @@ namespace cinema_2.forms
     public partial class SessionManagement : Form
     {
         private SessionPersistance sessionPersistance;
+        private BookingPersistance bookingPersistance;
         private FilmPersistence filmPersistance;
         private RoomPersistence roomPersistence;
 
@@ -23,6 +24,7 @@ namespace cinema_2.forms
         {
             InitializeComponent();
             sessionPersistance = new SessionPersistance();
+            bookingPersistance = new BookingPersistance();
             filmPersistance = new FilmPersistence();
             roomPersistence = new RoomPersistence();
             LoadAllSessions();
@@ -46,6 +48,11 @@ namespace cinema_2.forms
             if (DialogResult.Yes == result)
             {
                 SessionRow sessionRow = (SessionRow)dgvSessions.CurrentRow.DataBoundItem;
+                if (bookingPersistance.FindAllBySessionId(sessionRow.Id).Count != 0)
+                {
+                    MessageBoxManager.Error("Ошибка удаления", "На данный сеанс уже забронированы места!");
+                    return;
+                }
                 Session session = sessionPersistance.FindById(sessionRow.Id);
                 sessionPersistance.Remove(session);
                 LoadAllSessions();

@@ -8,6 +8,7 @@ namespace cinema_2
         [STAThread]
         public static void Main()
         {
+            System.IO.Directory.CreateDirectory($"{Application.StartupPath}/tickets");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
