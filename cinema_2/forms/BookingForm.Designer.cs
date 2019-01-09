@@ -103,6 +103,7 @@
             this.dgvSessions.AllowUserToDeleteRows = false;
             this.dgvSessions.AllowUserToOrderColumns = true;
             this.dgvSessions.AllowUserToResizeRows = false;
+            this.dgvSessions.AutoGenerateColumns = false;
             this.dgvSessions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvSessions.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvSessions.BorderStyle = System.Windows.Forms.BorderStyle.None;

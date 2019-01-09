@@ -3,7 +3,6 @@ using System.Linq;
 using System.Collections.Generic;
 using cinema_2.models;
 using cinema_2.db;
-using cinema_2.exceptions;
 
 namespace cinema_2.db.persistence
 {
@@ -11,7 +10,7 @@ namespace cinema_2.db.persistence
     {
         public Film FindById(long id)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var film = (from f in context.Film
                             where f.Id == id
@@ -22,7 +21,7 @@ namespace cinema_2.db.persistence
 
         public List<Film> FindAll()
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var films = (from f in context.Film
                              orderby f.Id descending
@@ -33,7 +32,7 @@ namespace cinema_2.db.persistence
 
         public List<Film> FindByName(string name)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var films = (from f in context.Film
                              where f.Name.Contains(name)
@@ -44,7 +43,7 @@ namespace cinema_2.db.persistence
 
         public Film Save(Film film)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 try
                 {
@@ -52,7 +51,7 @@ namespace cinema_2.db.persistence
                     context.SaveChanges();
                 } catch (Exception e)
                 {
-                    throw new UpdateExceptions("Save film error.");
+                    throw e;
                 }
                 
             }
@@ -61,7 +60,7 @@ namespace cinema_2.db.persistence
 
         public void Remove(Film film)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 context.Film.Remove(film);
                 context.SaveChanges();
@@ -73,7 +72,7 @@ namespace cinema_2.db.persistence
     {
         public Room FindById(long id)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var room = (from r in context.Room
                             where r.Id == id
@@ -84,7 +83,7 @@ namespace cinema_2.db.persistence
 
         public List<Room> FindAll()
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var rooms = (from r in context.Room
                              select new Room()
@@ -99,7 +98,7 @@ namespace cinema_2.db.persistence
 
         public Room Save(Room room)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 context.Update(room);
                 context.SaveChanges();
@@ -109,7 +108,7 @@ namespace cinema_2.db.persistence
 
         public Room Remove(Room room)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 context.Room.Remove(room);
                 context.SaveChanges();
@@ -122,7 +121,7 @@ namespace cinema_2.db.persistence
     {
         public Customer FindById(long id)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var customer = (from c in context.Customer
                             where c.Id == id
@@ -133,7 +132,7 @@ namespace cinema_2.db.persistence
 
         public List<Customer> FindAll()
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var customer = (from c in context.Customer
                              select c).ToList();
@@ -143,7 +142,7 @@ namespace cinema_2.db.persistence
 
         public Customer Save(Customer customer)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 context.Update(customer);
                 context.SaveChanges();
@@ -153,7 +152,7 @@ namespace cinema_2.db.persistence
 
         public void Remove(Customer customer)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 context.Customer.Remove(customer);
                 context.SaveChanges();
@@ -165,7 +164,7 @@ namespace cinema_2.db.persistence
     {
         public Session FindById(long id)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var session = (from s in context.Session
                                 join r in context.Room
@@ -193,7 +192,7 @@ namespace cinema_2.db.persistence
 
         public List<Session> FindAll()
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var session = (from s in context.Session
                                join r in context.Room on s.RoomId equals r.Id
@@ -217,7 +216,7 @@ namespace cinema_2.db.persistence
 
         public Session Save(Session session)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 context.Update(session);
                 context.SaveChanges();
@@ -227,7 +226,7 @@ namespace cinema_2.db.persistence
 
         public Session Remove(Session session)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 context.Session.Remove(session);
                 context.SaveChanges();
@@ -237,7 +236,7 @@ namespace cinema_2.db.persistence
 
         public bool AlreadyExist(Session session)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var res = (from s in context.Session
                          where s.FilmId == session.FilmId &&
@@ -254,7 +253,7 @@ namespace cinema_2.db.persistence
 
         public List<Session> FindAllByFilmId(long filmId)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var session = (from s in context.Session
                                join r in context.Room on s.RoomId equals r.Id
@@ -283,7 +282,7 @@ namespace cinema_2.db.persistence
     {
         public Booking FindById(long id)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var booking = (from b in context.Booking
                                join c in context.Customer on b.CustomerId equals c.Id
@@ -303,7 +302,7 @@ namespace cinema_2.db.persistence
 
         public List<Booking> FindAllBySessionId(long sessionId)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var res = (from b in context.Booking
                            where b.SessionId == sessionId
@@ -314,7 +313,7 @@ namespace cinema_2.db.persistence
 
         public List<Booking> FindAll()
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var bookings = (from b in context.Booking
                                 join c in context.Customer on b.CustomerId equals c.Id
@@ -339,7 +338,7 @@ namespace cinema_2.db.persistence
 
         public Booking FindBySessionAndSeats(long sessionId, int row, int seat)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 var booking = (from b in context.Booking
                                where b.SessionId == sessionId
@@ -352,7 +351,7 @@ namespace cinema_2.db.persistence
 
         public Booking Save(Booking booking)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 context.Update(booking);
                 context.SaveChanges();
@@ -362,7 +361,7 @@ namespace cinema_2.db.persistence
 
         public void Remove(Booking booking)
         {
-            using (MySqlDbContext context = new MySqlDbContext())
+            using (MsSqlDbContext context = new MsSqlDbContext())
             {
                 context.Booking.Remove(booking);
                 context.SaveChanges();

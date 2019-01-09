@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using cinema_2.models;
 using cinema_2.db.persistence;
-using cinema_2.exceptions;
 using cinema_2.forms.messages;
 using cinema_2.services;
 
@@ -59,12 +58,9 @@ namespace cinema_2
                 }
                 _filmPersistence.Save(film);
                 this.Cancel(sender, e);
-            } catch (UpdateExceptions ex)
+            } catch (Exception ex)
             {
                 MessageBoxManager.Error("Save film error", ex.Message);
-            } catch (FormatException ex)
-            {
-                MessageBoxManager.Exclamation("Invalid data", ex.Message);
             }
         }
 

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace cinema_2.db
 {
-    class MySqlDbContext : DbContext
+    class MsSqlDbContext : DbContext
     {
         public DbSet<Room> Room { get; set; }
         public DbSet<Row> Row { get; set; }
@@ -17,7 +17,7 @@ namespace cinema_2.db
         public DbSet<Session> Session { get; set; }
         public DbSet<Booking> Booking { get; set; }
 
-        public MySqlDbContext()
+        public MsSqlDbContext()
         {
             Database.EnsureCreated();
         }

@@ -164,7 +164,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="exceptions\Exceptions.cs" />
     <Compile Include="forms\BookingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,7 +186,7 @@
       <DependentUpon>EditFilmModal.cs</DependentUpon>
     </Compile>
     <Compile Include="db\persistence\Persistences.cs" />
-    <Compile Include="db\MySqlDbContext.cs" />
+    <Compile Include="db\MsSqlDbContext.cs" />
     <Compile Include="forms\FilmManagement.cs">
       <SubType>Form</SubType>
     </Compile>

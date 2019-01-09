@@ -47,6 +47,8 @@ namespace cinema_2.services
                "Номер заказа", booking.Id.ToString(), 1, 2);
             DrawTextBlock(gfx,
                 "Начало", booking.Session.DateTime.ToString("dd.MM.yyyy HH:mm"), 2, 2);
+            DrawTextBlock(gfx,
+                "Место", $"Ряд: {booking.Row} Место: {booking.Seat}", 3, 2);
 
             DrawBarCode(gfx, $"ticket-id-{booking.Id}", booking.Id);
             DrawBorder(gfx, page);
